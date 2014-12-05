@@ -4,7 +4,9 @@ angular.module('ctc', [
     'ngRoute',
     'ctc.about',
     'ctc.gallery',
-    'ctc.home'
+    'ctc.home',
+    'ctc.login',
+    'ctc.specials'
 ])
 
     .config([

@@ -1,1 +1,12 @@
 <p>Gallery</p>
+
+<div ng-controller="GalleryController">
+    <ul class="items">
+        <li class="item" ng-repeat="image in images">
+            <span ng-bind="image.id"></span>
+            <span ng-bind="image.title"></span>
+            <span ng-bind="image.description"></span>
+            <img class="image" src="/gallery/images/{{image.filename}}">
+        </li>
+    </ul>
+</div>

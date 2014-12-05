@@ -7,7 +7,8 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="/index.css">
+        <link rel="stylesheet" href="/gallery/gallery.css">
 
         <base href="/" />
     </head>
@@ -23,6 +24,7 @@
             <div class="nav-bar">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="home">Home</a></li>
+                    <li class="nav-item"><a href="specials">Specials</a></li>
                     <li class="nav-item"><a href="gallery">Gallery</a></li>
                     <li class="nav-item"><a href="about">About</a></li>
                 </ul>
@@ -34,14 +36,13 @@
         
         <div ng-view></div>
 
-        <!-- In production use:
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
-        -->
         <script src="lib/angular/angular.js"></script>
         <script src="lib/angular-route/angular-route.js"></script>
-        <script src="core.js"></script>
+        <script src="index.js"></script>
         <script src="about/about.js"></script>
         <script src="gallery/gallery.js"></script>
         <script src="home/home.js"></script>
+        <script src="login/login.js"></script>
+        <script src="specials/specials.js"></script>
     </body>
 </html>
