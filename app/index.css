@@ -1,0 +1,30 @@
+body {
+    padding: 20px;
+}
+
+.header {
+    padding-bottom: 20px;
+}
+
+.name {
+    float: left;
+    font-size: 36px;
+}
+
+.phone, .address {
+    text-align: right;
+}
+
+.address .line1 {
+    display: block;
+}
+
+.nav-bar {
+    text-align: right;
+    padding-top: 20px;
+}
+
+.nav-item {
+    display: inline-block;
+    padding-left: 15px;
+}

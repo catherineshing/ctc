@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ctc" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>CTC Jewelers</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="stylesheet" href="index.css">
+
+        <base href="/" />
+    </head>
+    <body>
+        <div class="header">
+            <!-- <div class="logo"><img src="logo.jpg"></div> -->
+            <div class="name">CTC Jewelers</div>
+            <div class="phone">(415)255-1839</div>
+            <div class="address">
+                <span class="line1">101 Utah St, Suite 108</span>
+                <span class="line2">San Francisco, CA 94103</span>
+            </div>
+            <div class="nav-bar">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="home">Home</a></li>
+                    <li class="nav-item"><a href="gallery">Gallery</a></li>
+                    <li class="nav-item"><a href="about">About</a></li>
+                </ul>
+            </div>
+
+            <hr/>
+
+        </div>
+        
+        <div ng-view></div>
+
+        <!-- In production use:
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+        -->
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular-route/angular-route.js"></script>
+        <script src="core.js"></script>
+        <script src="about/about.js"></script>
+        <script src="gallery/gallery.js"></script>
+        <script src="home/home.js"></script>
+    </body>
+</html>
