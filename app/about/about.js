@@ -5,7 +5,7 @@ angular.module('ctc.about', [
 ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/about', {
-            templateUrl: 'about/about.html',
+            templateUrl: 'about/about.tpl.html',
             controller: 'AboutController'
         });
     }])

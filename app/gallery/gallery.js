@@ -5,7 +5,7 @@ angular.module('ctc.gallery', [
 ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/gallery', {
-            templateUrl: 'gallery/gallery.html',
+            templateUrl: 'gallery/gallery.tpl.html',
             controller: 'GalleryController'
         });
     }])

@@ -5,7 +5,7 @@ angular.module('ctc.specials', [
 ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/specials', {
-            templateUrl: 'specials/specials.html',
+            templateUrl: 'specials/specials.tpl.html',
             controller: 'SpecialsController'
         });
     }])
