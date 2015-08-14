@@ -7,9 +7,13 @@
     ],
     "description": "ctc jewelers website",
     "dependencies": {
-        "angular": "1.2.x",
-        "angular-route": "1.2.x",
+        "angular": "1.2.27",
         "angular-loader": "1.2.x",
-        "angular-mocks": "~1.2.x"
+        "angular-mocks": "~1.2.x",
+        "angular-resource": "1.2.27",
+        "angular-route": "1.2.x",
+        "angular-ui-bootstrap-bower": "0.10.0",
+        "bootstrap": "3.1.1",
+        "ng-file-upload": "2.0.4"
     }
 }

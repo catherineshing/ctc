@@ -6,39 +6,74 @@
         <title>CTC Jewelers</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- start lib -->
+        <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+        <!-- end lib -->
         
         <link rel="stylesheet" href="/index.css">
+        <link rel="stylesheet" href="/contact/contact.css">
         <link rel="stylesheet" href="/gallery/gallery.css">
 
         <base href="/" />
     </head>
     <body>
         <div class="header">
-            <div class="name">CTC Jewelers</div>
-            <div class="phone">(415)255-1839</div>
-            <div class="address">
-                <span class="line1">101 Utah St, Suite 108</span>
-                <span class="line2">San Francisco, CA 94103</span>
+            <a href="home"><img src="ctc.jpg" class="name" alt="CTC Jewelers"></a>
+            <div class="info">
+                <div class="phone">(415) 255-1839</div>
+                <div class="address">
+                    <span class="line1">101 Utah St, Suite 108</span>
+                    <span class="line2">San Francisco, CA 94103</span>
+                </div>
             </div>
-            <div class="nav-bar">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="home">Home</a></li>
-                    <li class="nav-item"><a href="specials">Specials</a></li>
-                    <li class="nav-item"><a href="gallery">Gallery</a></li>
-                    <li class="nav-item"><a href="about">About</a></li>
-                </ul>
-            </div>
-
-            <hr/>
-
         </div>
-        
+        <div class="nav-bar" role="navigation">
+            <ul id="ctc-nav" class="nav nav-tabs">
+                <li role="presentation" class="active">
+                    <a href="home" data-toggle="tab">
+                        <div class="hidden-xs">Home</div>
+                        <div class="visible-xs"><span class="glyphicon glyphicon-home"></span></div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="specials" data-toggle="tab">
+                        <div class="hidden-xs">Specials</div>
+                        <div class="visible-xs"><span class="glyphicon glyphicon-tag"></span></div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="gallery" data-toggle="tab">
+                        <div class="hidden-xs">Gallery</div>
+                        <div class="visible-xs"><span class="glyphicon glyphicon-camera"></span></div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="about" data-toggle="tab">
+                        <div class="hidden-xs">About</div>
+                        <div class="visible-xs"><span class="glyphicon glyphicon-user"></span></div>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="contact" data-toggle="tab">
+                        <div class="hidden-xs">Contact</div>
+                        <div class="visible-xs"><span class="glyphicon glyphicon-envelope"></span></div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
         <div ng-view></div>
 
         <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular-mocks/angular-mocks.js"></script>
         <script src="lib/angular-route/angular-route.js"></script>
+        <script src="lib/ng-file-upload/angular-file-upload.js"></script>
+
+        <script src="api.js"></script>
         <script src="index.js"></script>
         <script src="about/about.js"></script>
+        <script src="contact/contact.js"></script>
         <script src="gallery/gallery.js"></script>
         <script src="home/home.js"></script>
         <script src="login/login.js"></script>

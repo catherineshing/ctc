@@ -3,6 +3,7 @@
 angular.module('ctc', [
     'ngRoute',
     'ctc.about',
+    'ctc.contact',
     'ctc.gallery',
     'ctc.home',
     'ctc.login',
@@ -10,7 +11,7 @@ angular.module('ctc', [
 ])
 
     .config([
-        '$routeProvider', 
+        '$routeProvider',
         '$locationProvider', 
         function($routeProvider, $locationProvider) {
             // Default view

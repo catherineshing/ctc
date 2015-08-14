@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('ctc.login', [
-    'ngRoute'
+    'ngRoute',
+    'angularFileUpload'
 ])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/login', {
@@ -12,7 +13,9 @@ angular.module('ctc.login', [
 
     .controller('LoginController', [
         '$scope',
-        function($scope) {
+        '$http',
+        '$upload',
+        function($scope, $http, $upload) {
             $scope.isAuthenticated = false;
             $scope.password = '';
 
@@ -20,6 +23,14 @@ angular.module('ctc.login', [
                 if (password == 'asdf') {
                     $scope.isAuthenticated = true;
                 }
+            };
+
+            $scope.addItem = function(item) {
+                console.log('adding item: ' + JSON.stringify(item));
+                $http.post('/api/items', item)
+                    .then(function(data) {
+                        console.log('add success: ' + JSON.stringify(data));
+                    });
             };
         }
     ]);
