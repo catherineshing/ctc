@@ -1,6 +1,6 @@
 # ctc
 
-node app.js
+node app/app.js
 
 
 TODO:
