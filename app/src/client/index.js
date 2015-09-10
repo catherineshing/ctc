@@ -3,6 +3,7 @@
 
     angular.module('ctc', [
         'ngRoute',
+        'ui.bootstrap',
         'ctc.about',
         'ctc.contact',
         'ctc.gallery',

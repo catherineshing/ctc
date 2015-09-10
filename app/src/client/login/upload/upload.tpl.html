@@ -1,0 +1,17 @@
+<div class="modal-header">
+    <h3 class="modal-title">Add Image</h3>
+</div>
+
+<form id="form" name="form" action="/api/items/image" ng-upload="upload.upload(content)">
+    <div class="modal-body">
+        <div class="form-group">
+            <input type="file" name="file" accept="image/jpeg, image/gif, image/png" required/>
+        </div>
+        <div class="accepted-formats">Accepted formats: jpeg, jpg, gif, png</div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="$dismiss()">Cancel</button>
+        <button class="btn btn-primary" ng-disabled="form.$invalid" upload-submit>Add</button>
+    </div>
+</form>

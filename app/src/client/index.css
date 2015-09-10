@@ -2,27 +2,19 @@ body {
     padding: 20px;
 }
 
-a {
+.header {
+    padding-bottom: 15px;
+}
+
+.header a {
     text-decoration: none;
 }
 
-.header {
-    padding-bottom: 20px;
-}
-
-.info {
+.header .info {
     padding-top: 10px;
 }
 
-.name {
-    float: left;
-}
-
-.phone, .address {
-    text-align: right;
-}
-
-.address .line1 {
+.header .address .line1 {
     display: block;
 }
 

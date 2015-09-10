@@ -14,17 +14,24 @@
         <link rel="stylesheet" href="/src/client/index.css">
         <link rel="stylesheet" href="/src/client/contact/contact.css">
         <link rel="stylesheet" href="/src/client/gallery/gallery.css">
+        <link rel="stylesheet" href="/src/client/login/login.css">
 
         <base href="/" />
     </head>
     <body>
         <div class="header">
-            <a href="home"><img src="/src/client/ctc.jpg" class="name" alt="CTC Jewelers"></a>
-            <div class="info">
-                <div class="phone">(415) 255-1839</div>
-                <div class="address">
-                    <span class="line1">101 Utah St, Suite 108</span>
-                    <span class="line2">San Francisco, CA 94103</span>
+            <div class="row">
+                <div class="col-sm-6">
+                    <a href="home"><img src="/images/ctc.jpg" class="name" alt="CTC Jewelers"></a>
+                </div>
+                <div class="col-sm-6">
+                    <div class="hidden-xs text-right info">
+                        <div class="phone">(415) 255-1839</div>
+                        <div class="address">
+                            <span class="line1">101 Utah St, Suite 108</span>
+                            <span class="line2">San Francisco, CA 94103</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -45,19 +52,19 @@
                 <li role="presentation">
                     <a href="gallery" data-toggle="tab" aria-controls="gallery">
                         <div class="hidden-xs">Gallery</div>
-                        <div class="visible-xs"><span class="glyphicon glyphicon-camera"></span></div>
+                        <div class="visible-xs"><span class="glyphicon glyphicon-picture"></span></div>
                     </a>
                 </li>
                 <li role="presentation">
                     <a href="about" data-toggle="tab" aria-controls="about">
                         <div class="hidden-xs">About</div>
-                        <div class="visible-xs"><span class="glyphicon glyphicon-user"></span></div>
+                        <div class="visible-xs"><span class="glyphicon glyphicon-info-sign"></span></div>
                     </a>
                 </li>
                 <li role="presentation">
                     <a href="contact" data-toggle="tab" aria-controls="contact">
                         <div class="hidden-xs">Contact</div>
-                        <div class="visible-xs"><span class="glyphicon glyphicon-envelope"></span></div>
+                        <div class="visible-xs"><span class="glyphicon glyphicon-earphone"></span></div>
                     </a>
                 </li>
             </ul>
@@ -65,19 +72,19 @@
 
         <div ng-view></div>
 
-        <script src="/lib/angular/angular.js"></script>
-        <script src="/lib/angular-mocks/angular-mocks.js"></script>
-        <script src="/lib/angular-route/angular-route.js"></script>
-        <script src="/lib/ng-file-upload/angular-file-upload.js"></script>
+        <script type="text/javascript" src="/lib/angular/angular.js"></script>
+        <script type="text/javascript" src="/lib/angular-mocks/angular-mocks.js"></script>
+        <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+        <script type="text/javascript" src="/lib/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+        <script type="text/javascript" src="/lib/ngUpload/ng-upload.js"></script>
 
-        <script src="/src/client/index.js"></script>
-        <script src="/src/client/about/about.js"></script>
-        <script src="/src/client/contact/contact.js"></script>
-        <script src="/src/client/gallery/gallery.js"></script>
-        <script src="/src/client/home/home.js"></script>
-        <script src="/src/client/login/login.js"></script>
-        <script src="/src/client/specials/specials.js"></script>
-
-        <script src="/src/server/api.js"></script>
+        <script type="text/javascript" src="/src/client/index.js"></script>
+        <script type="text/javascript" src="/src/client/about/about.js"></script>
+        <script type="text/javascript" src="/src/client/contact/contact.js"></script>
+        <script type="text/javascript" src="/src/client/gallery/gallery.js"></script>
+        <script type="text/javascript" src="/src/client/home/home.js"></script>
+        <script type="text/javascript" src="/src/client/login/login.js"></script>
+        <script type="text/javascript" src="/src/client/login/upload/upload.js"></script>
+        <script type="text/javascript" src="/src/client/specials/specials.js"></script>
     </body>
 </html>

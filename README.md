@@ -1,7 +1,13 @@
 # ctc
 
-node app.js
+node app/app.js
 
 
 TODO:
-- gallery detail page: click through from gallery image
+- fix navigation tabs
+- disable login submit button if no password
+- add overlay while promise is working
+- remove item
+- add special promotion
+- publish to social
+- better logging

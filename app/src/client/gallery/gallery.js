@@ -5,14 +5,41 @@
 
         .controller('GalleryController', [
             '$scope',
-            '$http',
-            function($scope, $http) {
-                $scope.images = [];
+            'GalleryService',
+            function($scope, GalleryService) {
 
-                $http.get('/api/items')
-                    .success(function(data) {
-                        $scope.images = data.items;
-                    });
+                GalleryService.getItems()
+                    .then(
+                        function(result) {
+                            $scope.images = result;
+                        }
+                    );
+            }
+        ])
+
+        .factory('GalleryService', [
+            '$http',
+            '$q',
+            function($http, $q) {
+                function getItems() {
+                    var deferred = $q.defer();
+
+                    $http.get('/api/items')
+                        .then(
+                            function(response) {
+                                deferred.resolve(response.data);
+                            },
+                            function(error) {
+                                deferred.reject(error);
+                            }
+                        );
+
+                    return deferred.promise;
+                }
+
+                return {
+                    getItems: getItems
+                };
             }
         ]);
 
