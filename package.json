@@ -1,14 +1,16 @@
 {
-  "name": "ctc",
-  "version": "0.0.0",
-  "description": "ctc jewelers website",
-  "main": "server.js",
-  "author": "catherine shing",
-  "dependencies": {
-    "bower": "^1.3.1",
-    "consolidate": "0.10.0",
-    "ejs": "0.8.5",
-    "express": "3.4.8",
-    "q": "1.0.1"
-  }
+    "name": "ctc",
+    "version": "0.0.0",
+    "description": "ctc jewelers website",
+    "main": "server.js",
+    "author": "catherine shing",
+    "dependencies": {
+        "bower": "^1.3.1",
+        "consolidate": "0.10.0",
+        "ejs": "0.8.5",
+        "express": "3.4.8",
+        "lodash": "2.4.1",
+        "q": "1.0.1",
+        "request": "2.11.4"
+    }
 }

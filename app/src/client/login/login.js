@@ -13,7 +13,9 @@
             'LoginService',
             function($modal, $rootScope, $scope, $timeout, LoginService) {
                 $scope.isAuthenticated = false;
-                $scope.item = {};
+                $scope.item = {
+                    special: false
+                };
 
                 $scope.authenticate = function(password) {
                     LoginService.login(password)
@@ -56,7 +58,9 @@
                                     message: 'Item Added'
                                 };
 
-                                $scope.item = {};
+                                $scope.item = {
+                                    special: false
+                                };
                             },
                             function(error) {
                                 $scope.alert = {

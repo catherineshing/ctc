@@ -11,7 +11,7 @@
                 GalleryService.getItems()
                     .then(
                         function(result) {
-                            $scope.images = result;
+                            $scope.items = result;
                         }
                     );
             }
@@ -24,7 +24,13 @@
                 function getItems() {
                     var deferred = $q.defer();
 
-                    $http.get('/api/items')
+                    $http({
+                            method: 'GET',
+                            url: '/api/items',
+                            params: {
+                                special: false
+                            }
+                        })
                         .then(
                             function(response) {
                                 deferred.resolve(response.data);

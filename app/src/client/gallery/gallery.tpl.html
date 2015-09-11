@@ -1,11 +1,11 @@
 <div class="gallery" ng-controller="GalleryController">
     <div class="row">
-        <div class="col-xs-6 col-sm-3" ng-repeat="image in images">
+        <div class="col-xs-6 col-sm-3" ng-repeat="item in items">
             <div class="thumbnail">
-                <a href="/images/items/{{image.filename}}" target="_blank"><img ng-src="/images/items/{{image.filename}}" alt="{{image.title}}"></a>
+                <a href="/images/items/{{item.filename}}" target="_blank"><img ng-src="/images/items/{{item.filename}}" alt="{{item.title}}"></a>
                 <div class="caption">
-                    <h4 ng-bind="image.title"></h4>
-                    <p ng-bind="image.description"></p>
+                    <h4 ng-bind="item.title"></h4>
+                    <p ng-bind="item.description"></p>
                 </div>
             </div>
         </div>

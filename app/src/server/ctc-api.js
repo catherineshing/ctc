@@ -1,8 +1,7 @@
 'use strict';
 
 var fs = require('fs'),
-    ctc = require('ctc'),
-    items = require('items');
+    ctc = require('ctc');
 
 
 function invoke(res, func, errorMessage) {
@@ -34,8 +33,10 @@ function login(req, res) {
 }
 
 function getItems(req, res) {
+    var special = req.param('special') === 'true';
+
     return invoke(res, function() {
-            return ctc.getItems();
+            return ctc.getItems(special);
         }, 'Failed to get items');
 }
 
@@ -49,12 +50,13 @@ function addItem(req, res) {
 
 function addImage(req, res) {
     var file = req.files.file,
+        filename = file.name.replace(/\s+/g, '-'),
         data = fs.readFileSync(file.path);
 
-    fs.writeFileSync(__dirname + '/images/items/' + file.name, data);
+    fs.writeFileSync(__dirname + '/images/items/' + filename, data);
     fs.unlinkSync(file.path);
 
-    res.json(200, file.name);
+    res.json(200, filename);
     return;
 }
 

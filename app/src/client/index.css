@@ -1,3 +1,4 @@
+/**  Index  **/
 body {
     padding: 20px;
 }
@@ -21,4 +22,102 @@ body {
 .nav-bar {
     padding-top: 25px;
     padding-bottom: 25px;
+}
+
+
+/**  About  **/
+
+
+/**  Contact  **/
+.contact .contact-table {
+    margin: 20px 0;
+}
+
+.contact .contact-table td {
+    vertical-align: top;
+    padding-bottom: 10px;
+}
+
+.contact .field {
+    width: 100px;
+}
+
+.contact .hours {
+    padding-bottom: 3px;
+}
+
+.contact .hours-day {
+    float: left;
+    width: 70px;
+}
+
+.contact .links {
+    margin-bottom: 20px;
+}
+
+.contact .links a {
+    padding-right: 10px;
+}
+
+.contact .links .twitter img {
+    max-width: 32px;
+}
+
+.contact .links .yelp img {
+    max-width: 29px;
+}
+
+.contact .map iframe {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    .contact .map {
+        text-align: center;
+    }
+}
+
+
+/**  Gallery  **/
+
+
+/**  Home  **/
+
+
+/**  Login  **/
+.login #description {
+    max-width: 100%;
+    max-height: 200px;
+}
+
+.login .page {
+    margin-bottom: 18px;
+}
+
+.login .form-group > span {
+    font-weight: bold;
+}
+
+.login .btn.add {
+    margin-top: -50px;
+}
+
+@media screen and (max-width: 768px) {
+    .login label {
+        padding-bottom: 5px;
+    }
+}
+
+
+.upload-modal .accepted-formats {
+    margin-top: -5px;
+    padding-bottom: 20px;
+}
+
+
+/**  Specials  **/
+.specials h4 {
+    margin-bottom: 25px;
 }

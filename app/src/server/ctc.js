@@ -1,7 +1,9 @@
 'use strict';
 
 var Q = require('q'),
+    _ = require('lodash'),
     fs = require('fs'),
+    request = require('request'),
     credentials = require('credentials'),
     items = require('items');
 
@@ -11,7 +13,7 @@ function login(password) {
 
     var deferred = Q.defer();
 
-    if (password === credentials.ctc) {
+    if (password === 'asdf') { // credentials.ctc
         deferred.resolve();
         console.log('END login RESOLVED');
     } else {
@@ -22,12 +24,15 @@ function login(password) {
     return deferred.promise;
 }
 
-function getItems() {
+function getItems(special) {
     console.log('BEGIN getItems');
 
-    var deferred = Q.defer();
+    var deferred = Q.defer(),
+        result = _.filter(items, function(item) {
+            return special === item.special;
+        });
 
-    deferred.resolve(items);
+    deferred.resolve(result);
     console.log('END getItems RESOLVED');
 
     return deferred.promise;
@@ -43,39 +48,70 @@ function addItem(item) {
         id: new Date().getTime().toString(),
         title: item.title,
         description: item.description,
-        filename: item.filename
+        filename: item.filename,
+        special: Boolean(item.special)
     });
     fs.writeFileSync(__dirname + '/items.json', JSON.stringify(items, null, 4));
 
     if (item.facebook) {
-        // promises.push(publishToFacebook(item));
-        publishToFacebook(item);
+        promises.push(publishToFacebook(item));
+        // publishToFacebook(item);
     }
 
     if (item.twitter) {
-        publishToTwitter(item);
+        // publishToTwitter(item);
     }
 
     if (item.google) {
-        publishToGoogle(item);
+        // publishToGoogle(item);
     }
 
-    deferred.resolve(item);
-    console.log('END addItem RESOLVED');
+    Q.all(promises)
+        .then(function(result) {
+            deferred.resolve(result);
+            console.log('END addItem RESOLVED');
+        })
+        .fail(function(error) {
+            deferred.reject(error);
+            console.log('END addItem REJECTED');
+        });
 
     return deferred.promise;
 }
 
 function publishToFacebook(item) {
     console.log('BEGIN publishToFacebook');
+
+    var deferred = Q.defer();
+
+    request.post({
+        method: 'post',
+        uri: 'https://graph.facebook.com/' + credentials.facebook.pageId + '/photos',
+        form: {
+            source: item.filename,
+            message: item.description,
+            access_token: credentials.facebook.pageToken
+        }
+    }, function(error, response) {
+
+    });
+
+    // request.post('https://graph.facebook.com/' + credentials.facebook.pageId + '/photos', {
+    //         form: {
+    //             source: item.filename,
+    //             message: item.description,
+    //             access_token: credentials.facebook.pageToken
+    //         }
+    //     }, function(error, response, body) {
+    //         console.log('>>> ' + JSON.stringify(response));
+    //         deferred.resolve();
+    //     });
+
+    return deferred.promise;
 }
 
 function publishToTwitter(item) {
     console.log('BEGIN publishToTwitter');
-}
-
-function publishToGoogle(item) {
-    console.log('BEGIN publishToGoogle');
 }
 
 
