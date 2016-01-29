@@ -88,7 +88,7 @@ function publishToFacebook(item) {
         method: 'post',
         uri: 'https://graph.facebook.com/' + credentials.facebook.pageId + '/photos',
         form: {
-            source: item.filename,
+            source: __dirname + '/images/items/' + item.filename,
             message: item.description,
             access_token: credentials.facebook.pageToken
         }
@@ -112,6 +112,26 @@ function publishToFacebook(item) {
 
 function publishToTwitter(item) {
     console.log('BEGIN publishToTwitter');
+
+    var deferred = Q.defer();
+
+    request.post({
+        method: 'post',
+        uri: 'https://api.twitter.com/1.1/media/upload.json',
+        form: {
+            file: __dirname + '/images/items/' + item.filename,
+            status: item.description,
+            access_token: credentials.facebook.pageToken
+        }
+    }, function(error, response) {
+
+    });
+
+    return deferred.promise;
+}
+
+function deleteItem(itemId) {
+    console.log('BEGIN deleteItem');
 }
 
 
@@ -119,6 +139,7 @@ module.exports = {
 
     login: login,
     getItems: getItems,
-    addItem: addItem
+    addItem: addItem,
+    deleteItem: deleteItem
 
 };

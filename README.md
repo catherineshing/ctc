@@ -5,11 +5,11 @@ node app/app.js
 
 TODO:
 - fix navigation tabs
-- disable login submit button if no password
-- add to specials or gallery
+- max upload size
+- disable upload add button if no file selected
+- hitting 'enter' should submit form
 - add overlay while promise is working
 - remove item
-- add special promotion
 - publish to social
 - better logging
 - SEO

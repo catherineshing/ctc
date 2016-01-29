@@ -100,20 +100,16 @@ body {
     font-weight: bold;
 }
 
-.login .btn.add {
-    margin-top: -50px;
-}
-
 @media screen and (max-width: 768px) {
     .login label {
         padding-bottom: 5px;
     }
 }
 
-
-.upload-modal .accepted-formats {
-    margin-top: -5px;
-    padding-bottom: 20px;
+@media screen and (min-width: 768px) {
+    .login .btn.add {
+        margin-top: -50px;
+    }
 }
 
 

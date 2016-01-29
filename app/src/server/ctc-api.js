@@ -48,10 +48,33 @@ function addItem(req, res) {
         }, 'Failed to add item');
 }
 
+function deleteItem(req, res) {
+    var itemId = req.param('itemId');
+
+    return invoke(res, function() {
+            return ctc.deleteItem(itemId);
+        }, 'Failed to delete item');
+}
+
 function addImage(req, res) {
     var file = req.files.file,
         filename = file.name.replace(/\s+/g, '-'),
-        data = fs.readFileSync(file.path);
+        filesize = fs.statSync(file.path).size,
+        data;
+
+    if (filesize > 5 * 1000000) {
+        res.json(400, {
+            error: {
+                message: 'File exceeds max limit of 5MB',
+                detail: {
+                    filesize: filesize
+                }
+            }
+        });
+        return;
+    }
+
+    data = fs.readFileSync(file.path);
 
     fs.writeFileSync(__dirname + '/images/items/' + filename, data);
     fs.unlinkSync(file.path);
@@ -66,6 +89,7 @@ module.exports = function(app) {
     app.post('/api/login', login);
     app.get('/api/items', getItems);
     app.post('/api/items', addItem);
+    // app.delete('/api/items/:itemId', deleteItem);
     app.post('/api/items/image', addImage);
 
 };
