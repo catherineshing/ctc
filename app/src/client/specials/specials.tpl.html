@@ -1,14 +1,7 @@
-<div class="specials" ng-controller="SpecialsController">
-    <h4>Check out our amazing specials!</h4>
+<div class="specials" ng-controller="SpecialsController as specials">
     <div class="row">
-        <div class="col-xs-6 col-sm-3" ng-repeat="special in specials">
-            <div class="thumbnail">
-                <a href="/images/items/{{special.filename}}" target="_blank"><img ng-src="/images/items/{{special.filename}}" alt="{{special.title}}"></a>
-                <div class="caption">
-                    <h4 ng-bind="special.title"></h4>
-                    <p ng-bind="special.description"></p>
-                </div>
-            </div>
+        <div class="col-sm-3" ng-repeat="item in specials.items">
+            <div item-thumbnail ng-model="item" parent="specials"></div>
         </div>
     </div>
 </div>

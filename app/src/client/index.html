@@ -3,85 +3,72 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <base href="/" />
+
         <title>CTC Jewelers</title>
+        <link rel="icon" href="/images/ctc.jpg">
+
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- start lib -->
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-        <!-- end lib -->
-        
-        <link rel="stylesheet" href="/src/client/index.css">
 
-        <base href="/" />
+        <link rel="stylesheet" href="/src/client/index.css">
     </head>
     <body>
-        <div class="header">
-            <div class="row">
-                <div class="col-sm-6">
-                    <a href="home"><img src="/images/ctc.jpg" class="name" alt="CTC Jewelers"></a>
-                </div>
-                <div class="col-sm-6">
-                    <div class="hidden-xs text-right info">
-                        <div class="phone">(415) 255-1839</div>
-                        <div class="address">
-                            <span class="line1">101 Utah St, Suite 108</span>
-                            <span class="line2">San Francisco, CA 94103</span>
+        <div class="ctc" ng-controller="IndexController as index">
+            <div class="header">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <a href="home"><img ng-src="{{index.info.logo}}" class="name" alt="{{index.info.name}}"></a>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="hidden-xs text-right info">
+                            <div class="phone" ng-bind="index.info.phone"></div>
+                            <div class="address">
+                                <div ng-bind="index.info.address.line1"></div>
+                                <div>{{index.info.address.city}}, {{index.info.address.state}} {{index.info.address.zip}}</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="nav-bar" role="navigation">
-            <ul id="ctc-nav" class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active">
-                    <a href="home" data-toggle="tab" aria-controls="home">
-                        <div class="hidden-xs">Home</div>
-                        <div class="visible-xs"><span class="glyphicon glyphicon-home"></span></div>
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="specials" data-toggle="tab" aria-controls="specials">
-                        <div class="hidden-xs">Specials</div>
-                        <div class="visible-xs"><span class="glyphicon glyphicon-tag"></span></div>
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="gallery" data-toggle="tab" aria-controls="gallery">
-                        <div class="hidden-xs">Gallery</div>
-                        <div class="visible-xs"><span class="glyphicon glyphicon-picture"></span></div>
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="about" data-toggle="tab" aria-controls="about">
-                        <div class="hidden-xs">About</div>
-                        <div class="visible-xs"><span class="glyphicon glyphicon-info-sign"></span></div>
-                    </a>
-                </li>
-                <li role="presentation">
-                    <a href="contact" data-toggle="tab" aria-controls="contact">
-                        <div class="hidden-xs">Contact</div>
-                        <div class="visible-xs"><span class="glyphicon glyphicon-earphone"></span></div>
-                    </a>
-                </li>
-            </ul>
+            <div class="nav-bar">
+                <ul class="nav nav-tabs" role="navigation">
+                    <li role="presentation" ng-class="{active: index.tab === tab.path}" ng-repeat="tab in index.tabs">
+                        <a href="{{tab.path}}" ng-click="index.loadTab(tab)">
+                            <div class="hidden-xs" ng-bind="tab.name"></div>
+                            <div class="visible-xs"><span class="{{tab.icon}}"></span></div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div ui-view=""></div>
         </div>
 
-        <div ng-view></div>
-
-        <script type="text/javascript" src="/lib/angular/angular.js"></script>
-        <script type="text/javascript" src="/lib/angular-mocks/angular-mocks.js"></script>
-        <script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
-        <script type="text/javascript" src="/lib/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
-        <script type="text/javascript" src="/lib/ngUpload/ng-upload.js"></script>
+        <script type="text/javascript" src="/lib/angular/angular.min.js"></script>
+        <script type="text/javascript" src="/lib/angular-cookies/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="/lib/angular-resource/angular-resource.min.js"></script>
+        <script type="text/javascript" src="/lib/angular-smart-table/dist/smart-table.min.js"></script>
+        <script type="text/javascript" src="/lib/angular-ui-bootstrap-bower/ui-bootstrap-tpls.min.js"></script>
+        <script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script type="text/javascript" src="/lib/lodash/lodash.min.js"></script>
+        <script type="text/javascript" src="/lib/ng-file-upload/ng-file-upload-all.min.js"></script>
 
         <script type="text/javascript" src="/src/client/index.js"></script>
+        <script type="text/javascript" src="/src/client/ctc-resource.js"></script>
+        <script type="text/javascript" src="/src/client/ctc-service.js"></script>
         <script type="text/javascript" src="/src/client/about/about.js"></script>
         <script type="text/javascript" src="/src/client/contact/contact.js"></script>
         <script type="text/javascript" src="/src/client/gallery/gallery.js"></script>
         <script type="text/javascript" src="/src/client/home/home.js"></script>
+        <script type="text/javascript" src="/src/client/item/item.js"></script>
+        <script type="text/javascript" src="/src/client/item/item-edit.js"></script>
+        <script type="text/javascript" src="/src/client/item/item-thumbnail.js"></script>
         <script type="text/javascript" src="/src/client/login/login.js"></script>
-        <script type="text/javascript" src="/src/client/login/upload/upload.js"></script>
+        <script type="text/javascript" src="/src/client/login/login-add.js"></script>
+        <script type="text/javascript" src="/src/client/login/login-edit.js"></script>
         <script type="text/javascript" src="/src/client/specials/specials.js"></script>
     </body>
 </html>

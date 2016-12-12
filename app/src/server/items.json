@@ -1,16 +1,35 @@
 [
     {
         "id": "id1",
-        "title": "item1",
-        "description": "description1",
-        "filename": "1.jpg",
-        "special": true
+        "image": "/images/items/1.jpg",
+        "color": "D",
+        "clarity": "FL",
+        "certification": "GIA",
+        "shape": "emerald",
+        "weight": 3.456,
+        "price": "12345.00",
+        "onSale": false
     },
     {
         "id": "id2",
-        "title": "item2",
-        "description": "description2",
-        "filename": "2.jpg",
-        "special": false
+        "image": "/images/items/2.jpg",
+        "color": "D",
+        "clarity": "FL",
+        "certification": "GIA",
+        "shape": "oval",
+        "weight": 2.345,
+        "price": "12345.00",
+        "onSale": true,
+        "salePrice": "12300.00"
+    },
+    {
+        "id": "test-1",
+        "image": "/images/items/test-1.png",
+        "color": "E",
+        "clarity": "VVS1",
+        "certification": "AGS",
+        "shape": "emerald",
+        "weight": 1.2345,
+        "price": "123456.00"
     }
 ]

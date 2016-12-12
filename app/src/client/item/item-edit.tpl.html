@@ -1,0 +1,124 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}<button class="close" ng-click="$dismiss()">&times;</button></h4>
+</div>
+
+<div class="modal-body">
+    <div class="row">
+        <div class="col-xs-4 col-sm-2">
+            <div class="preview">
+                <i class="spinner glyphicon glyphicon-hourglass animate-spin" ng-show="!item.image"></i>
+                <a class="thumbnail" ng-href="{{itemEdit.item.image}}" target="_blank">
+                    <img ng-src="{{itemEdit.item.image}}" alt="{{itemEdit.item.id}}">
+                </a>
+            </div>
+            <div class="btn btn-link" ngf-select ngf-change="itemEdit.changeImage($files[0], item)" ngf-accept="'{{itemEdit.options.accept}}'" ngf-pattern="'{{itemEdit.options.accept}}'" ngf-multiple="{{itemEdit.options.multiple}}" ngf-resize="{{itemEdit.options.resize}}">Change image</div>
+        </div>
+        <div class="col-xs-8 col-sm-10">
+            <form name="form" class="form-horizontal" novalidate>
+                <div class="col-sm-6">
+                    <div class="form-group" ng-class="{'has-error': !form.id.$pristine && form.id.$invalid}">
+                        <label class="col-sm-3">Stock #</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="id" class="form-control" ng-disabled="idEditDisabled" ng-model="itemEdit.item.id" required>
+                            <div class="validation-message" ng-show="!form.id.$pristine && form.id.$invalid">
+                                <span class="help-block" ng-show="form.id.$error.required">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Color</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="color" ng-model="itemEdit.item.color">
+                                <option value="{{color}}" ng-repeat="color in itemEdit.colors">{{color}}</option>
+                            </select>
+                            <div class="validation-message" ng-show="!form.color.$pristine && form.color.$invalid">
+                                <span class="help-block" ng-show="form.color.$error.required">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Clarity</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="clarity" ng-model="itemEdit.item.clarity">
+                                <option value="{{clarity}}" ng-repeat="clarity in itemEdit.clarities">{{clarity}}</option>
+                            </select>
+                            <div class="validation-message" ng-show="!form.clarity.$pristine && form.clarity.$invalid">
+                                <span class="help-block" ng-show="form.clarity.$error.required">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Certification</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="certification" ng-model="itemEdit.item.certification">
+                                <option value="{{key}}" ng-repeat="(key, value) in itemEdit.certifications">{{value}}</option>
+                            </select>
+                            <div class="validation-message" ng-show="!form.certification.$pristine && form.certification.$invalid">
+                                <span class="help-block" ng-show="form.certification.$error.required">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label class="col-sm-3">Shape</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" name="shape" ng-model="itemEdit.item.shape">
+                                <option value="{{shape | lowercase}}" ng-repeat="shape in itemEdit.shapes">{{shape}}</option>
+                            </select>
+                            <div class="validation-message" ng-show="!form.shape.$pristine && form.shape.$invalid">
+                                <span class="help-block" ng-show="form.shape.$error.required">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3">Weight</label>
+                        <div class="col-sm-9">
+                            <div class="input-group">
+                                <input type="text" name="weight" class="form-control" ng-model="itemEdit.item.weight" required>
+                                <div class="input-group-addon">CT</div>
+                            </div>
+                            <div class="validation-message" ng-show="!form.weight.$pristine && form.weight.$invalid">
+                                <span class="help-block" ng-show="form.weight.$error.required">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-xs-12 col-sm-3">Price</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">$</div>
+                                <input type="text" name="price" class="form-control" ng-model="itemEdit.item.price" required>
+                            </div>
+                            <div class="validation-message" ng-show="!form.price.$pristine && form.price.$invalid">
+                                <span class="help-block" ng-show="form.price.$error.required">Required</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-4 col-sm-3">
+                            <div class="checkbox">
+                                <label><input type="checkbox" ng-model="itemEdit.item.onSale">On sale</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-if="itemEdit.item.onSale">
+                        <label class="col-xs-12 col-sm-3">Sale Price</label>
+                        <div class="col-xs-8 col-sm-6">
+                            <div class="input-group">
+                                <div class="input-group-addon">$</div>
+                                <input type="text" name="salePrice" class="form-control" ng-model="itemEdit.item.salePrice" required>
+                            </div>
+                            <div class="validation-message" ng-show="!form.salePrice.$pristine && form.salePrice.$invalid">
+                                <span class="help-block" ng-show="form.salePrice.$error.required">Required</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-danger" ng-click="itemEdit.deleteItem(itemEdit.item)">Delete</button>
+    <button type="submit" class="btn btn-success" ng-click="itemEdit.saveItem(itemEdit.item)" ng-disabled="form.$invalid">Save</button>
+</div>

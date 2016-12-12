@@ -2,12 +2,14 @@
 require('module').Module._initPaths();
 
 var express = require('express'),
+    bodyParser = require('body-parser'),
     consolidate = require('consolidate'),
+    multipart = require('connect-multiparty'),
     app = express(),
     api;
 
-app.use(express.json());
-app.use(express.multipart());
+app.use(bodyParser.json());
+app.use(multipart());
 
 // configuration
 app.use('/lib', express.static(__dirname + '/lib'));

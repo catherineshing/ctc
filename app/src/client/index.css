@@ -1,119 +1,120 @@
-/**  Index  **/
+.ctc {
+  /* About */
+  /* Contact */
+  /* Gallery, Specials */
+  /* Home */
+  /* Item */
+  /* Login */
+}
+.ctc .header {
+  padding-bottom: 15px;
+}
+.ctc .header a {
+  text-decoration: none;
+}
+.ctc .header .info {
+  padding-top: 10px;
+}
+.ctc .nav-bar {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+.ctc .contact .day {
+  float: left;
+  width: 80px;
+}
+.ctc .contact .links {
+  margin-bottom: 15px;
+}
+.ctc .contact .link {
+  margin-right: 15px;
+}
+.ctc .contact .link.twitter img {
+  max-width: 32px;
+}
+.ctc .contact .link.yelp img {
+  max-width: 29px;
+}
+.ctc .contact .map iframe {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 4px;
+}
+.ctc .gallery .thumbnail,
+.ctc .specials .thumbnail {
+  cursor: pointer;
+  height: 250px;
+}
+.ctc .gallery .thumbnail .image-wrapper,
+.ctc .specials .thumbnail .image-wrapper {
+  max-height: 150px;
+  overflow: auto;
+}
+.ctc .gallery .thumbnail .caption,
+.ctc .specials .thumbnail .caption {
+  padding: 3px 9px;
+}
+.ctc .item .price-wrapper {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.ctc .item .price-wrapper .price {
+  font-size: 18px;
+  font-weight: 500;
+}
+.ctc .item .stock {
+  margin-top: 0;
+}
+.ctc .login .btn-group {
+  margin-bottom: 15px;
+}
+.ctc .login .badge {
+  margin-left: 5px;
+  background-color: #777;
+}
+.ctc .login .thumbnail {
+  cursor: pointer;
+}
+.ctc .login .uploader {
+  border: 1px dashed #ccc;
+}
+.ctc .login .uploader .drop-area {
+  padding: 10px;
+  min-height: 100px;
+}
+.ctc .login .uploader .header {
+  padding-bottom: 12px;
+}
+.ctc .login .uploader .header i {
+  top: 2px;
+  padding-right: 2px;
+  font-size: 18px;
+}
+.ctc .login .uploader .header .btn-link {
+  padding-left: 0;
+  margin-top: -2px;
+}
+.ctc .login .uploader .error-message {
+  margin-bottom: 15px;
+  white-space: pre;
+}
+.ctc .login .uploader .glyphicon-pencil {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  color: #fff;
+}
 body {
-    padding: 20px;
+  padding: 20px;
 }
-
-.header {
-    padding-bottom: 15px;
+/* Item Edit */
+.item-edit .preview .thumbnail {
+  margin-bottom: 0;
 }
-
-.header a {
-    text-decoration: none;
+.item-edit .btn-link {
+  padding: 4px;
 }
-
-.header .info {
-    padding-top: 10px;
-}
-
-.header .address .line1 {
-    display: block;
-}
-
-.nav-bar {
-    padding-top: 25px;
-    padding-bottom: 25px;
-}
-
-
-/**  About  **/
-
-
-/**  Contact  **/
-.contact .contact-table {
-    margin: 20px 0;
-}
-
-.contact .contact-table td {
-    vertical-align: top;
-    padding-bottom: 10px;
-}
-
-.contact .field {
-    width: 100px;
-}
-
-.contact .hours {
-    padding-bottom: 3px;
-}
-
-.contact .hours-day {
-    float: left;
-    width: 70px;
-}
-
-.contact .links {
-    margin-bottom: 20px;
-}
-
-.contact .links a {
-    padding-right: 10px;
-}
-
-.contact .links .twitter img {
-    max-width: 32px;
-}
-
-.contact .links .yelp img {
-    max-width: 29px;
-}
-
-.contact .map iframe {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 4px;
-}
-
-@media screen and (min-width: 768px) {
-    .contact .map {
-        text-align: center;
-    }
-}
-
-
-/**  Gallery  **/
-
-
-/**  Home  **/
-
-
-/**  Login  **/
-.login #description {
-    max-width: 100%;
-    max-height: 200px;
-}
-
-.login .page {
-    margin-bottom: 18px;
-}
-
-.login .form-group > span {
-    font-weight: bold;
-}
-
-@media screen and (max-width: 768px) {
-    .login label {
-        padding-bottom: 5px;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .login .btn.add {
-        margin-top: -50px;
-    }
-}
-
-
-/**  Specials  **/
-.specials h4 {
-    margin-bottom: 25px;
+.item-edit .checkbox {
+  margin-left: -10px;
 }

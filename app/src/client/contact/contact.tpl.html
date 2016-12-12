@@ -1,50 +1,47 @@
-<div class="contact" ng-controller="ContactController">
+<div class="contact" ng-controller="ContactController as contact">
     <div class="row">
         <div class="col-sm-6 contact-info">
-            <div>We are located in the San Francisco Jewelry Center, which is open to wholesale customers only. Please feel free to contact us with any questions or to schedule an appointment.</div>
-            <table class="contact-table">
-                <tbody>
-                    <tr class="contact-address">
-                        <td class="field">Address:</td>
-                        <td class="value">
-                            <div>San Francisco Jewelry Center</div>
-                            <div>101 Utah St., Suite 108</div>
-                            <div>San Francisco, CA 94103</div>
-                            <div>(between Alameda St. and 15th St.)</div>
-                        </td>
-                    </tr>
-                    <tr class="contact-telephone">
-                        <td class="field">Telephone:</td>
-                        <td class="value">(415) 255-1839</td>
-                    </tr>
-                    <tr class="contact-email">
-                        <td class="field">Email:</td>
-                        <td class="value"><a href="mailto:ctc94103@yahoo.com">ctc94103@yahoo.com</a></td>
-                    </tr>
-                    <tr class="contact-hours">
-                        <td class="field">Hours:</td>
-                        <td class="value">
-                            <div class="hours">
-                                <span class="hours-day">Mon-Fri</span>
-                                <span class="hours-time">10am - 5pm</span>
-                            </div>
-                            <div class="hours">
-                                <span class="hours-day">Sat-Sun</span>
-                                <span class="hours-time">By appointment only</span>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="links">
-                <a class="facebook" href="http://www.facebook.com/CtcJewelers" target="_blank"><img src="/images/facebook.png"></a>
-                <a class="twitter" href="http://twitter.com/CTCJewelers" target="_blank"><img src="/images/twitter.png"></a>
-                <a class="yelp" href="http://www.yelp.com/biz/ctc-jewelers-san-francisco" target="_blank"><img src="/images/yelp.png"></a>
+            <div class="form form-horizontal">
+                <div class="form-group">
+                    <div class="col-xs-12" ng-bind="contact.description"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3"><label>Address:</label></div>
+                    <div class="col-sm-9">
+                        <div>San Francisco Jewelry Center</div>
+                        <div ng-bind="contact.info.address.line1"></div>
+                        <div>{{contact.info.address.city}}, {{contact.info.address.state}} {{contact.info.address.zip}}</div>
+                        <div ng-bind="contact.info.address.line2"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3"><label>Telephone:</label></div>
+                    <div class="col-sm-9" ng-bind="contact.info.phone"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3"><label>Email:</label></div>
+                    <div class="col-sm-9">
+                        <a ng-href="mailto:{{contact.info.email}}" ng-bind="contact.info.email"></a>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-3"><label>Hours:</label></div>
+                    <div class="col-sm-9">
+                        <div class="hour" ng-repeat="hour in contact.hours">
+                            <span class="day" ng-bind="hour.day"></span>
+                            <span class="time" ng-bind="hour.time"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-xs-12 links">
+                        <a class="link {{link.name | lowercase}}" ng-href="{{link.url}}" target="_blank" ng-repeat="link in contact.links"><img ng-src="{{link.icon}}" alt="{{link.name}}"></a>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-sm-6 map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3153.946015018397!2d-122.406611!3d37.767864!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e2dc2c6ae29%3A0x5bdb0112d7edab3a!2sCTC+Jewelers!5e0!3m2!1sen!2sus!4v1417765158826" width="400" height="400" frameborder="0"></iframe>
+        <div class="col-sm-6 text-center map">
+            <iframe ng-src="{{contact.mapUrl}}" width="400" height="400" frameborder="0"></iframe>
         </div>
     </div>
 </div>

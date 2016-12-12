@@ -2,121 +2,46 @@
     'use strict';
 
     angular.module('ctc.login', [
-        'ctc.upload'
+        'ngCookies',
+        'ctc.ctc-service',
+        'ctc.login-add',
+        'ctc.login-edit'
     ])
 
         .controller('LoginController', [
-            '$modal',
-            '$rootScope',
-            '$scope',
-            '$timeout',
-            'LoginService',
-            function($modal, $rootScope, $scope, $timeout, LoginService) {
-                $scope.isAuthenticated = false;
-                $scope.item = {
-                    special: false
-                };
+            '$cookieStore',
+            '$state',
+            'CtcService',
+            function($cookieStore, $state, CtcService) {
+                var that = this,
+                    session = 60 * 60 * 1000, // 1 hour session
+                    state = $state.current.name;
 
-                $scope.authenticate = function(password) {
-                    LoginService.login(password)
-                        .then(
-                            function(result) {
-                                $scope.isAuthenticated = true;
-                            },
-                            function(error) {
-                                $scope.loginError = true;
-                                console.log('Authentication failed');
-                            }
-                        );
-                };
-
-                $scope.addImage = function() {
-                    var modalInstance,
-                        modalScope = $rootScope.$new();
-
-                    modalInstance = $modal.open({
-                        templateUrl: '/src/client/login/upload/upload.tpl.html',
-                        controller: 'UploadController as upload',
-                        size: 'lg',
-                        windowClass: 'upload-modal',
-                        animate: false,
-                        scope: modalScope
-                    });
-
-                    modalInstance.result
-                        .then(function(filename) {
-                            $scope.item.filename = filename;
-                        });
-                };
-
-                $scope.addItem = function(item) {
-                    LoginService.addItem(item)
-                        .then(
-                            function(result) {
-                                $scope.alert = {
-                                    type: 'success',
-                                    message: 'Item Added'
-                                };
-
-                                $scope.item = {
-                                    special: false
-                                };
-                            },
-                            function(error) {
-                                $scope.alert = {
-                                    type: 'danger',
-                                    message: 'Failed to add item'
-                                };
-                            }
-                        )
-                        .finally(function() {
-                            $timeout(function() {
-                                $scope.alert = null;
-                            }, 10000);
-                        });
-                };
-            }
-        ])
-
-        .factory('LoginService', [
-            '$http',
-            '$q',
-            function($http, $q) {
-                function login(password) {
-                    var deferred = $q.defer();
-
-                    $http.post('/api/login', {password: password})
-                        .then(
-                            function(response) {
-                                deferred.resolve(response);
-                            },
-                            function(error) {
-                                deferred.reject(error);
-                            }
-                        );
-
-                    return deferred.promise;
+                // Default to Add state
+                if (state.indexOf('login.') === -1) {
+                    state = 'login.add';
                 }
 
-                function addItem(item) {
-                    var deferred = $q.defer();
-
-                    $http.post('/api/items', item)
-                        .then(
-                            function(response) {
-                                deferred.resolve(response);
-                            },
-                            function(error) {
-                                deferred.reject(error);
-                            }
-                        );
-
-                    return deferred.promise;
+                this.isAuthenticated = new Date().getTime() - $cookieStore.get('ctc') < session;
+                if (this.isAuthenticated) {
+                    $state.go(state);
                 }
 
-                return {
-                    login: login,
-                    addItem: addItem
+                this.login = function() {
+                    CtcService.login(that.password)
+                        .then(
+                            function(result) {
+                                that.isAuthenticated = true;
+
+                                $cookieStore.put('ctc', new Date().getTime());                                
+
+                                $state.go(state);
+                            },
+                            function(error) {
+                                that.loginError = true;
+                                console.error('Authentication failed');
+                            }
+                        );
                 };
             }
         ]);

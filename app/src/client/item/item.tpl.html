@@ -1,0 +1,49 @@
+<div class="item" ng-controller="ItemController as item">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="thumbnail">
+                <img ng-src="{{item.item.image}}" alt="{{item.item.id}}">
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-xs-12">
+                    <h3 class="stock">Stock #{{item.item.id}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 price-wrapper" ng-if="item.item.onSale">
+                    <div>Reg. ${{item.item.price | number:2}}</div>
+                    <span class="price text-danger">Now ${{item.item.salePrice | number:2}}</span> {{item.item.salePrice/item.item.price | number:0}}% off
+                </div>
+                <div class="col-xs-12 price-wrapper" ng-if="!item.item.onSale">
+                    <div class="price">${{item.item.price | number:2}}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5 col-sm-3"><label>Color:</label></div>
+                <div class="col-xs-7 col-sm-9" ng-bind="item.item.color"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5 col-sm-3"><label>Clarity:</label></div>
+                <div class="col-xs-7 col-sm-9" ng-bind="item.item.clarity"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5 col-sm-3"><label>Certification:</label></div>
+                <div class="col-xs-7 col-sm-9" ng-bind="item.item.certification"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5 col-sm-3"><label>Shape:</label></div>
+                <div class="col-xs-7 col-sm-9" ng-bind="item.item.shape | capitalize"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-5 col-sm-3"><label>Weight:</label></div>
+                <div class="col-xs-7 col-sm-9">{{item.item.weight}}CT</div>
+            </div>
+        </div>
+    </div>
+    <ul class="pager">
+        <li class="previous" ng-show="item.item.previous"><a ng-href="/{{item.parentState}}/item/{{item.item.previous}}">&larr; Previous</a></li>
+        <li class="next" ng-show="item.item.next"><a ng-href="/{{item.parentState}}/item/{{item.item.next}}">&rarr; Next</a></li>
+    </ul>
+</div>

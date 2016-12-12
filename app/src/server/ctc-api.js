@@ -1,7 +1,6 @@
 'use strict';
 
-var fs = require('fs'),
-    ctc = require('ctc');
+var ctc = require('ctc');
 
 
 function invoke(res, func, errorMessage) {
@@ -9,10 +8,10 @@ function invoke(res, func, errorMessage) {
 
     promise
         .then(function(result) {
-            res.json(200, result);
+            res.status(200).json(result);
         })
         .fail(function(error) {
-            res.json(400, {
+            res.status(400).json({
                 error: {
                     message: errorMessage,
                     detail: error
@@ -33,54 +32,44 @@ function login(req, res) {
 }
 
 function getItems(req, res) {
-    var special = req.param('special') === 'true';
+    var args = req.query.args;
 
     return invoke(res, function() {
-            return ctc.getItems(special);
+            return ctc.getItems(args);
         }, 'Failed to get items');
 }
 
-function addItem(req, res) {
+function getItem(req, res) {
+    var itemId = req.params.itemId,
+        args = req.query.args;
+
+    return invoke(res, function() {
+            return ctc.getItem(itemId, args);
+        }, 'Failed to get item');
+}
+
+function saveItem(req, res) {
     var item = req.body;
 
     return invoke(res, function() {
-            return ctc.addItem(item);
-        }, 'Failed to add item');
+            return ctc.saveItem(item);
+        }, 'Failed to save item');
 }
 
 function deleteItem(req, res) {
-    var itemId = req.param('itemId');
+    var item = req.body;
 
     return invoke(res, function() {
-            return ctc.deleteItem(itemId);
+            return ctc.deleteItem(item);
         }, 'Failed to delete item');
 }
 
-function addImage(req, res) {
-    var file = req.files.file,
-        filename = file.name.replace(/\s+/g, '-'),
-        filesize = fs.statSync(file.path).size,
-        data;
+function saveImage(req, res) {
+    var file = req.files.file;
 
-    if (filesize > 5 * 1000000) {
-        res.json(400, {
-            error: {
-                message: 'File exceeds max limit of 5MB',
-                detail: {
-                    filesize: filesize
-                }
-            }
-        });
-        return;
-    }
-
-    data = fs.readFileSync(file.path);
-
-    fs.writeFileSync(__dirname + '/images/items/' + filename, data);
-    fs.unlinkSync(file.path);
-
-    res.json(200, filename);
-    return;
+    return invoke(res, function() {
+            return ctc.saveImage(file);
+        }, 'Failed to save image');
 }
 
 
@@ -88,8 +77,9 @@ module.exports = function(app) {
 
     app.post('/api/login', login);
     app.get('/api/items', getItems);
-    app.post('/api/items', addItem);
-    // app.delete('/api/items/:itemId', deleteItem);
-    app.post('/api/items/image', addImage);
+    app.get('/api/items/:itemId', getItem);
+    app.post('/api/items', saveItem);
+    app.delete('/api/items', deleteItem);
+    app.post('/api/items/image', saveImage);
 
 };

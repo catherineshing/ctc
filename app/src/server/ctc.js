@@ -3,9 +3,8 @@
 var Q = require('q'),
     _ = require('lodash'),
     fs = require('fs'),
-    request = require('request'),
     credentials = require('credentials'),
-    items = require('items');
+    itemsFile = __dirname + '/items.json';
 
 
 function login(password) {
@@ -24,114 +23,172 @@ function login(password) {
     return deferred.promise;
 }
 
-function getItems(special) {
+function getItems(args) {
     console.log('BEGIN getItems');
 
     var deferred = Q.defer(),
-        result = _.filter(items, function(item) {
-            return special === item.special;
-        });
+        items = JSON.parse(fs.readFileSync(itemsFile, 'utf8'));
 
-    deferred.resolve(result);
+    args = getArgs(args);
+
+    if (args.onSale) {
+        items = _.filter(items, 'onSale');
+    }
+    if (args.tmp) {
+        var tmpFiles = fs.readdirSync(__dirname + '/images/tmp/');
+        items = _.map(tmpFiles, function(tmpFile) {
+            return {
+                image: '/images/tmp/' + tmpFile
+            };
+        });
+    }
+
+    deferred.resolve(items);
     console.log('END getItems RESOLVED');
 
     return deferred.promise;
 }
 
-function addItem(item) {
-    console.log('BEGIN addItem');
+function getItem(itemId, args) {
+    console.log('BEGIN getItem');
 
     var deferred = Q.defer(),
-        promises = [];
+        items = JSON.parse(fs.readFileSync(itemsFile, 'utf8')),
+        index,
+        result;
 
-    items.push({
-        id: new Date().getTime().toString(),
-        title: item.title,
-        description: item.description,
-        filename: item.filename,
-        special: Boolean(item.special)
+    args = getArgs(args);
+
+    if (args.onSale) {
+        items = _.filter(items, 'onSale');
+    }
+
+    index = _.findIndex(items, function(item) {
+        return itemId === item.id;
     });
-    fs.writeFileSync(__dirname + '/items.json', JSON.stringify(items, null, 4));
 
-    if (item.facebook) {
-        promises.push(publishToFacebook(item));
-        // publishToFacebook(item);
+    result = items[index];
+
+    if (index > 0) {
+        result.previous = items[index - 1].id;
     }
 
-    if (item.twitter) {
-        // publishToTwitter(item);
+    if (index < items.length - 1) {
+        result.next = items[index + 1].id;
     }
 
-    if (item.google) {
-        // publishToGoogle(item);
-    }
-
-    Q.all(promises)
-        .then(function(result) {
-            deferred.resolve(result);
-            console.log('END addItem RESOLVED');
-        })
-        .fail(function(error) {
-            deferred.reject(error);
-            console.log('END addItem REJECTED');
-        });
+    deferred.resolve(result);
+    console.log('END getItem RESOLVED');
 
     return deferred.promise;
 }
 
-function publishToFacebook(item) {
-    console.log('BEGIN publishToFacebook');
+function saveItem(item) {
+    console.log('BEGIN saveItem');
 
-    var deferred = Q.defer();
+    var deferred = Q.defer(),
+        items = JSON.parse(fs.readFileSync(itemsFile, 'utf8')),
+        extension = item.image.split('.').pop(),
+        filename = '/images/items/' + item.id + '.' + extension,
+        itemIndex,
+        existingImage;
 
-    request.post({
-        method: 'post',
-        uri: 'https://graph.facebook.com/' + credentials.facebook.pageId + '/photos',
-        form: {
-            source: __dirname + '/images/items/' + item.filename,
-            message: item.description,
-            access_token: credentials.facebook.pageToken
+    _.forEach(items, function(existingItem, index) {
+        if (item.id === existingItem.id) {
+            itemIndex = index;
+            existingImage = existingItem.image;
+            return;
         }
-    }, function(error, response) {
-
     });
 
-    // request.post('https://graph.facebook.com/' + credentials.facebook.pageId + '/photos', {
-    //         form: {
-    //             source: item.filename,
-    //             message: item.description,
-    //             access_token: credentials.facebook.pageToken
-    //         }
-    //     }, function(error, response, body) {
-    //         console.log('>>> ' + JSON.stringify(response));
-    //         deferred.resolve();
-    //     });
+    if (item.image.indexOf('/tmp/') !== -1) {
+        var source = __dirname + item.image,
+            destination = __dirname + filename;
 
-    return deferred.promise;
-}
-
-function publishToTwitter(item) {
-    console.log('BEGIN publishToTwitter');
-
-    var deferred = Q.defer();
-
-    request.post({
-        method: 'post',
-        uri: 'https://api.twitter.com/1.1/media/upload.json',
-        form: {
-            file: __dirname + '/images/items/' + item.filename,
-            status: item.description,
-            access_token: credentials.facebook.pageToken
+        if (existingImage && fs.existsSync(__dirname + existingImage)) {
+            fs.unlinkSync(__dirname + existingImage);
         }
-    }, function(error, response) {
 
-    });
+        moveFile(source, destination, function() {});
+    }
+
+    item.image = filename;
+
+    if (_.isUndefined(itemIndex)) {
+        items.push(item);
+    } else {
+        items[itemIndex] = item;
+    }
+
+    fs.writeFileSync(itemsFile, JSON.stringify(items, null, 4));
+
+    deferred.resolve(item);
+    console.log('END saveItem RESOLVED');
 
     return deferred.promise;
 }
 
-function deleteItem(itemId) {
+function deleteItem(item) {
     console.log('BEGIN deleteItem');
+
+    var deferred = Q.defer(),
+        items = JSON.parse(fs.readFileSync(itemsFile, 'utf8'));
+
+    fs.unlinkSync(__dirname + item.image);
+
+    if (item.id) {
+        _.forEach(items, function(existingItem, index) {
+            if (item.id === existingItem.id) {
+                items.splice(index, 1);
+                fs.writeFileSync(itemsFile, JSON.stringify(items, null, 4));
+                return;
+            }
+        });
+    }
+
+    deferred.resolve();
+    console.log('END deleteItem RESOLVED');
+
+    return deferred.promise;
+}
+
+function saveImage(file) {
+    console.log('BEGIN saveImage');
+
+    var deferred = Q.defer(),
+        extension = file.type.replace(/.+\//, ''),
+        filename = '/images/tmp/' + new Date().getTime() + '.' + extension,
+        source = file.path,
+        destination = __dirname + filename;
+
+    moveFile(source, destination, function() {
+        deferred.resolve(filename);
+        console.log('END saveImage RESOLVED');
+    });
+
+    return deferred.promise;
+}
+
+function getArgs(args) {
+    if (args && _.isString(args)) {
+        return JSON.parse(args);
+    }
+
+    return {};
+}
+
+function moveFile(source, destination, callback) {
+    var inputStream = fs.createReadStream(source),
+        outputStream = fs.createWriteStream(destination);
+
+    inputStream.pipe(outputStream);
+    inputStream.on('end', function() {
+        fs.unlinkSync(source);
+        callback();
+    });
+    inputStream.on('error', function(error) {
+        throw new Error(error);
+    });
 }
 
 
@@ -139,7 +196,9 @@ module.exports = {
 
     login: login,
     getItems: getItems,
-    addItem: addItem,
-    deleteItem: deleteItem
+    getItem: getItem,
+    saveItem: saveItem,
+    deleteItem: deleteItem,
+    saveImage: saveImage
 
 };
