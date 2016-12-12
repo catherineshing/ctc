@@ -12,6 +12,9 @@
 .ctc .header a {
   text-decoration: none;
 }
+.ctc .header img {
+  max-height: 90px;
+}
 .ctc .header .info {
   padding-top: 10px;
 }
