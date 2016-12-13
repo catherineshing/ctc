@@ -17,7 +17,7 @@
                     zip: '94103'
                 },
                 email: 'ctc94103@yahoo.com',
-                logo: '/images/ctc.jpg'
+                logo: '/images/ctc.png'
             },
             Certifications: {
                 GIA: 'Gemological Institute of America',
