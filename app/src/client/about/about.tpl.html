@@ -1,5 +1,146 @@
-<div class="about" ng-controller="AboutController">
+<div class="about" ng-controller="AboutController as about">
     <p>CTC Jewelers was established in 1986 and is family-owned and operated. We strive to provide our customers with the highest quality merchandise at the lowest possible price. Because all of our items are imported directly from manufacturers, we are able to offer our customers the finest quality jewels at wholesale prices.</p>
 
-    <p>All of our diamonds are conflict-free and GIA certified. If you don't see the perfect piece in our store, we would be more than happy to order... </p>
+    <p>All of our diamonds are conflict-free and certified by major gemological labs. If you don't see the perfect piece in our store, we would be more than happy to order your desired item directly from our manufacturers. We can also create custom settings to fit your exact needs.</p>
+
+    <p>When shopping for a diamond, consider its <a href="#cut">cut</a>, <a href="#color">color</a>, <a href="#clarity">clarity</a>, <a href="#carat">carat weight</a>, and <a href="#shape">shape</a>.</p>
+
+    <div id="cut" class="panel panel-default">
+        <div class="panel-heading">Cut</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2">Excellent</div>
+                <div class="col-sm-10">
+                    <div>Reflects nearly all of the light that enters the diamond, achieving the most brilliance.</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">Very Good</div>
+                <div class="col-sm-10">
+                    <div>Reflects most of the light that enters the diamond. Achieves similar brilliance to excellent cut under normal lighting conditions.</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">Good</div>
+                <div class="col-sm-10">
+                    <div>Reflects a large amount of light that enters the diamond, achieving brilliance at a more attractive value.</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">Fair</div>
+                <div class="col-sm-10">
+                    <div>Allows a large amount of the light entering the diamond to escape, resulting in less brilliance.</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">Poor</div>
+                <div class="col-sm-10">
+                    <div>Allows most of the light entering the diamond to escape, resulting in a dull or glassy appearance.</div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="color" class="panel panel-default">
+        <div class="panel-heading">Color</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2">D-F</div>
+                <div class="col-sm-10">
+                    <label>Colorless</label>
+                    <div>Small traces of color can be detected by a gemologist, but not to the untrained eye. Colorless diamonds are very rare.</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">G-J</div>
+                <div class="col-sm-10">
+                    <label>Near Colorless</label>
+                    <div>Appears colorless, but slight color is noticeable when compared to higher color grades. Near colorless diamonds provide excellent value.</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">K-M</div>
+                <div class="col-sm-10">
+                    <label>Faint Yellow</label>
+                    <div>Faint color can be detected by the naked eye. When set against a darker color (such as yellow gold), the color of the diamond is less noticeable.</div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="clarity" class="panel panel-default">
+        <div class="panel-heading">Clarity</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-2">FL, IF</div>
+                <div class="col-sm-10">
+                    <label>Flawless, Internally Flawless</label>
+                    <div>Inclusions are not visible under 10x magnification. These diamonds have very slight blemishes, if any, and are extremely rare.</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">VVS1, VVS2</div>
+                <div class="col-sm-10">
+                    <label>Very Very Slightly Included</label>
+                    <div>Inclusions are difficult to see under 10x magnification. VVS1 inclusions are located in the bottom-half (pavilion), and VVS2 inclusions are located in the top-half (crown).</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">VS1, VS2</div>
+                <div class="col-sm-10">
+                    <label>Very Slightly Included</label>
+                    <div>Inclusions are slightly visible under 10x magnification. VS1 diamonds contain fewer inclusions than VS2 diamonds.</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">SI1, SI2</div>
+                <div class="col-sm-10">
+                    <label>Slightly Included</label>
+                    <div>Inclusions are noticeable under 10x magnification, but usually cannot be seen by the naked eye.</div>
+                    <br>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">I1, I2, I3</div>
+                <div class="col-sm-10">
+                    <label>Included</label>
+                    <div>Inclusions are obvious under 10x magnification, and can usually be seen by the naked eye.</div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="carat" class="panel panel-default">
+        <div class="panel-heading">Carat Weight</div>
+        <div class="panel-body">
+            A diamond's carat weight refers to its weight, not size. The cut quality will impact how large the diamond appears &mdash; higher cut grades will make a diamond appear larger.
+        </div>
+    </div>
+
+    <div id="shape" class="panel panel-default">
+        <div class="panel-heading">Shape</div>
+        <div class="panel-body">
+            <div class="row" ng-repeat="shape in about.shapes">
+                <div class="col-xs-2">
+                    <div class="image {{shape | lowercase}}"></div>
+                </div>
+                <div class="col-xs-10">
+                    <div class="shape-name" ng-bind="shape"></div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

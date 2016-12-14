@@ -22,7 +22,65 @@
 
 
     /* About */
-    .about {}
+    .about {
+        #cut {
+            margin-top: 30px;
+        }
+
+        .image {
+            background: url('/images/shapes.png') no-repeat;
+            width: 80px;
+            height: 80px;
+
+            &.asscher {
+                background-position: -470px -20px;
+            }
+
+            &.cushion {
+                background-position: -613px -20px;
+            }
+
+            &.emerald {
+                background-position: -182px -170px;
+            }
+
+            &.heart {
+                background-position: -613px -170px;
+            }
+
+            &.marquise {
+                background-position: -470px -170px;
+            }
+
+            &.oval {
+                background-position: -42px -170px;
+            }
+
+            &.pear {
+                background-position: -327px -170px;
+            }
+
+            &.princess {
+                background-position: -182px -20px;
+            }
+
+            &.radiant {
+                background-position: -325px -20px;
+            }
+
+            &.round {
+                background-position: -40px -20px;
+            }
+
+            &.trillion {
+                background-position: -40px -170px;
+            }
+        }
+
+        .shape-name {
+            line-height: 70px;
+        }
+    }
 
 
     /* Contact */
@@ -33,18 +91,24 @@
         }
 
         .links {
+            margin-top: 10px;
             margin-bottom: 15px;
-        }
 
-        .link {
-            margin-right: 15px;
+            .btn {
+                margin-right: 10px;
+                color: #fff;
 
-            &.twitter img {
-                max-width: 32px;
-            }
+                &.facebook {
+                    background-color: #3b5998;
+                }
 
-            &.yelp img {
-                max-width: 29px;
+                &.twitter {
+                    background-color: #1DA1F2;
+                }
+
+                &.yelp {
+                    background-color: #D32323;
+                }
             }
         }
 
@@ -109,10 +173,6 @@
             background-color: #777;
         }
 
-        .thumbnail {
-            cursor: pointer;
-        }
-
         .uploader {
             border: 1px dashed #ccc;
 
@@ -139,6 +199,10 @@
             .error-message {
                 margin-bottom: 15px;
                 white-space: pre;
+            }
+
+            .thumbnail {
+                cursor: pointer;
             }
 
             .glyphicon-pencil {

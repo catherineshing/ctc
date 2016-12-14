@@ -22,21 +22,70 @@
   padding-top: 25px;
   padding-bottom: 25px;
 }
+.ctc .about #cut {
+  margin-top: 30px;
+}
+.ctc .about .image {
+  background: url('/images/shapes.png') no-repeat;
+  width: 80px;
+  height: 80px;
+}
+.ctc .about .image.asscher {
+  background-position: -470px -20px;
+}
+.ctc .about .image.cushion {
+  background-position: -613px -20px;
+}
+.ctc .about .image.emerald {
+  background-position: -182px -170px;
+}
+.ctc .about .image.heart {
+  background-position: -613px -170px;
+}
+.ctc .about .image.marquise {
+  background-position: -470px -170px;
+}
+.ctc .about .image.oval {
+  background-position: -42px -170px;
+}
+.ctc .about .image.pear {
+  background-position: -327px -170px;
+}
+.ctc .about .image.princess {
+  background-position: -182px -20px;
+}
+.ctc .about .image.radiant {
+  background-position: -325px -20px;
+}
+.ctc .about .image.round {
+  background-position: -40px -20px;
+}
+.ctc .about .image.trillion {
+  background-position: -40px -170px;
+}
+.ctc .about .shape-name {
+  line-height: 70px;
+}
 .ctc .contact .day {
   float: left;
   width: 80px;
 }
 .ctc .contact .links {
+  margin-top: 10px;
   margin-bottom: 15px;
 }
-.ctc .contact .link {
-  margin-right: 15px;
+.ctc .contact .links .btn {
+  margin-right: 10px;
+  color: #fff;
 }
-.ctc .contact .link.twitter img {
-  max-width: 32px;
+.ctc .contact .links .btn.facebook {
+  background-color: #3b5998;
 }
-.ctc .contact .link.yelp img {
-  max-width: 29px;
+.ctc .contact .links .btn.twitter {
+  background-color: #1DA1F2;
+}
+.ctc .contact .links .btn.yelp {
+  background-color: #D32323;
 }
 .ctc .contact .map iframe {
   border: 1px solid #ddd;
@@ -75,9 +124,6 @@
   margin-left: 5px;
   background-color: #777;
 }
-.ctc .login .thumbnail {
-  cursor: pointer;
-}
 .ctc .login .uploader {
   border: 1px dashed #ccc;
 }
@@ -100,6 +146,9 @@
 .ctc .login .uploader .error-message {
   margin-bottom: 15px;
   white-space: pre;
+}
+.ctc .login .uploader .thumbnail {
+  cursor: pointer;
 }
 .ctc .login .uploader .glyphicon-pencil {
   cursor: pointer;

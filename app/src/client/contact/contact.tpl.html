@@ -34,14 +34,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <div class="col-xs-12 links">
-                        <a class="link {{link.name | lowercase}}" ng-href="{{link.url}}" target="_blank" ng-repeat="link in contact.links"><img ng-src="{{link.icon}}" alt="{{link.name}}"></a>
+                    <div class="col-sm-offset-3 col-sm-9 links">
+                        <a class="btn btn-sm {{link.name | lowercase}}" ng-href="{{link.url}}" target="_blank" title="{{link.name}}" ng-repeat="link in contact.links"><i class="glyphicon icon-{{link.name | lowercase}}"></i></a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 text-center map">
-            <iframe ng-src="{{contact.mapUrl}}" width="400" height="400" frameborder="0"></iframe>
+            <iframe ng-src="{{contact.mapUrl}}" width="100%" height="400" frameborder="0"></iframe>
         </div>
     </div>
 </div>
