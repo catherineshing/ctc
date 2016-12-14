@@ -34,12 +34,17 @@ function getItems(args) {
     if (args.onSale) {
         items = _.filter(items, 'onSale');
     }
+
     if (args.tmp) {
         var tmpFiles = fs.readdirSync(__dirname + '/images/tmp/');
         items = _.map(tmpFiles, function(tmpFile) {
             return {
                 image: '/images/tmp/' + tmpFile
             };
+        });
+    } else {
+        _.forEach(items, function(item) {
+            item = convertItem(item);
         });
     }
 
@@ -67,7 +72,7 @@ function getItem(itemId, args) {
         return itemId === item.id;
     });
 
-    result = items[index];
+    result = convertItem(items[index]);
 
     if (index > 0) {
         result.previous = items[index - 1].id;
@@ -175,6 +180,19 @@ function getArgs(args) {
     }
 
     return {};
+}
+
+function convertItem(item) {
+    item.url = 'http://ctcjewelers.com/gallery/item/' + item.id;
+    item.encodedUrl = encodeURIComponent(item.url);
+    item.description = [
+        item.weight + 'CT',
+        item.shape,
+        item.certification,
+        item.clarity
+    ].join(' ');
+
+    return item;
 }
 
 function moveFile(source, destination, callback) {

@@ -121,3 +121,6 @@ body {
 .item-edit .checkbox {
   margin-left: -10px;
 }
+.item-edit .checkbox label {
+  color: #333;
+}

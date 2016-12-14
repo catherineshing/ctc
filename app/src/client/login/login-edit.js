@@ -58,6 +58,16 @@
                             }
                         });
                 };
+
+                this.shareItem = function(item) {
+                    FB.ui({
+                        method: 'share',
+                        href: item.url,
+                        quote: item.description
+                    }, function(response) {
+
+                    });
+                };
             }
         ]);
 

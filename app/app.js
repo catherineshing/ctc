@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 app.use(multipart());
 
 // configuration
+app.use('/fonts', express.static(__dirname + '/fonts'));
 app.use('/lib', express.static(__dirname + '/lib'));
 app.use('/src', express.static(__dirname + '/src'));
 app.use('/images', express.static(__dirname + '/src/server/images'));
