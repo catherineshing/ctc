@@ -26,45 +26,45 @@
   margin-top: 30px;
 }
 .ctc .about .image {
-  background: url('/images/shapes.png') no-repeat;
-  width: 80px;
-  height: 80px;
+  background: url('/images/shapes.jpg') no-repeat;
+  width: 65px;
+  height: 65px;
 }
 .ctc .about .image.asscher {
-  background-position: -470px -20px;
+  background-position: -1px -95px;
 }
 .ctc .about .image.cushion {
-  background-position: -613px -20px;
+  background-position: -197px -95px;
 }
 .ctc .about .image.emerald {
-  background-position: -182px -170px;
+  background-position: -135px -7px;
 }
 .ctc .about .image.heart {
-  background-position: -613px -170px;
+  background-position: -135px -95px;
 }
 .ctc .about .image.marquise {
-  background-position: -470px -170px;
+  background-position: -259px -7px;
 }
 .ctc .about .image.oval {
-  background-position: -42px -170px;
+  background-position: -197px -7px;
 }
 .ctc .about .image.pear {
-  background-position: -327px -170px;
+  background-position: -322px -7px;
 }
 .ctc .about .image.princess {
-  background-position: -182px -20px;
+  background-position: -71px -7px;
 }
 .ctc .about .image.radiant {
-  background-position: -325px -20px;
+  background-position: -71px -95px;
 }
 .ctc .about .image.round {
-  background-position: -40px -20px;
+  background-position: -1px -7px;
 }
 .ctc .about .image.trillion {
-  background-position: -40px -170px;
+  background-position: -322px -95px;
 }
 .ctc .about .shape-name {
-  line-height: 70px;
+  line-height: 65px;
 }
 .ctc .contact .day {
   float: left;
