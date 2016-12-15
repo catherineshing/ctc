@@ -2,11 +2,11 @@
 
 @font-face {
   font-family: "font-awesome";
-  src:url("/fonts/font-awesome.eot");
-  src:url("/fonts/font-awesome.eot?#iefix") format("embedded-opentype"),
-    url("/fonts/font-awesome.woff") format("woff"),
-    url("/fonts/font-awesome.ttf") format("truetype"),
-    url("/fonts/font-awesome.svg#font-awesome") format("svg");
+  src:url("/rsrc/fonts/font-awesome.eot");
+  src:url("/rsrc/fonts/font-awesome.eot?#iefix") format("embedded-opentype"),
+    url("/rsrc/fonts/font-awesome.woff") format("woff"),
+    url("/rsrc/fonts/font-awesome.ttf") format("truetype"),
+    url("/rsrc/fonts/font-awesome.svg#font-awesome") format("svg");
   font-weight: normal;
   font-style: normal;
 

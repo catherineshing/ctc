@@ -7,52 +7,16 @@
         <base href="/" />
 
         <title>CTC Jewelers</title>
-        <link rel="icon" href="/images/ctc-icon.png">
+        <link rel="icon" href="/rsrc/images/ctc-icon.png">
 
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-
+        <link rel="stylesheet" href="/rsrc/fonts/styles.css">
         <link rel="stylesheet" href="/src/client/index.css">
-        <link rel="stylesheet" href="/src/client/styles.css">
     </head>
     <body>
-        <script>
-            window.fbAsyncInit = function() {
-                FB.init({
-                    appId: '1028879607151887',
-                    status: true,
-                    cookie: true,
-                    xfbml: true,
-                    version: 'v2.4'
-                });
-            };
-            (function(d, s, id){
-                var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id)) {return;}
-                js = d.createElement(s); js.id = id;
-                js.src = "//connect.facebook.net/en_US/sdk.js";
-                fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));
-        </script>
-        <script>
-            window.twttr = (function(d, s, id) {
-                var js, fjs = d.getElementsByTagName(s)[0],
-                    t = window.twttr || {};
-                if (d.getElementById(id)) return t;
-                js = d.createElement(s);
-                js.id = id;
-                js.src = "https://platform.twitter.com/widgets.js";
-                fjs.parentNode.insertBefore(js, fjs);
-                t._e = [];
-                t.ready = function(f) {
-                    t._e.push(f);
-                };
-                return t;
-            }(document, "script", "twitter-wjs"));
-        </script>
-
         <div class="ctc" ng-controller="IndexController as index">
             <div class="header">
                 <div class="row">
@@ -91,6 +55,9 @@
         <script type="text/javascript" src="/lib/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="/lib/lodash/lodash.min.js"></script>
         <script type="text/javascript" src="/lib/ng-file-upload/ng-file-upload-all.min.js"></script>
+
+        <script type="text/javascript" src="/rsrc/scripts/facebook.js"></script>
+        <script type="text/javascript" src="/rsrc/scripts/twitter.js"></script>
 
         <script type="text/javascript" src="/src/client/index.js"></script>
         <script type="text/javascript" src="/src/client/ctc-resource.js"></script>

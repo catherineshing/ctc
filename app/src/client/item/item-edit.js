@@ -35,6 +35,8 @@
                 this.colors = CtcConstant.Colors;
                 this.shapes = CtcConstant.Shapes;
 
+                this.priceRegex = '\\d+(\\.\\d{2})?';
+
                 this.changeImage = function(file, item) {
                     file.progress = 0;
 
