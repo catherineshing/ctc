@@ -66,8 +66,8 @@
 
                 this.saveItem = function(item) {
                     CtcService.saveItem(item)
-                        .then(function() {
-                            $modalInstance.close(item);
+                        .then(function(result) {
+                            $modalInstance.close(result);
                         });
                 };
             }

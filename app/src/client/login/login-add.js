@@ -20,7 +20,8 @@
                 var that = this;
 
                 $scope.login.state = $state.current.name;
-                $scope.login.addCount = 0;
+
+                this.newItems = [];
 
                 this.options = {
                     accept: 'image/*',
@@ -74,7 +75,7 @@
 
                     modalScope.title = 'Add Item';
                     modalScope.item = item;
-                    modalScope.idEditDisabled = false;
+                    modalScope.isNew = true;
 
                     modalInstance = $modal.open({
                         templateUrl: '/src/client/item/item-edit.tpl.html',
@@ -88,7 +89,7 @@
                     modalInstance.result
                         .then(function(result) {
                             if (!result.deleted) {
-                                $scope.login.addCount += 1;
+                                that.newItems.push(result);
                             }
 
                             that.items.splice(index, 1);

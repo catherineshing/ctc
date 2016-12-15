@@ -18,7 +18,7 @@
                     <div class="form-group" ng-class="{'has-error': !form.id.$pristine && form.id.$invalid}">
                         <label class="col-sm-3">Stock #</label>
                         <div class="col-sm-9">
-                            <input type="text" name="id" class="form-control" ng-disabled="idEditDisabled" ng-model="itemEdit.item.id" required>
+                            <input type="text" name="id" class="form-control" ng-disabled="!isNew" ng-model="itemEdit.item.id" required>
                             <div class="validation-message" ng-show="!form.id.$pristine && form.id.$invalid">
                                 <span class="help-block" ng-show="form.id.$error.required">Required</span>
                             </div>

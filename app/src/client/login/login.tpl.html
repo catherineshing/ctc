@@ -19,7 +19,7 @@
     <div ng-if="login.isAuthenticated">
         <div class="btn-group">
             <label class="btn btn-default" ng-model="login.state" btn-radio="'login.add'" ui-sref="login.add">Add</label>
-            <label class="btn btn-default" ng-model="login.state" btn-radio="'login.edit'" ui-sref="login.edit">Edit<span class="badge" ng-if="login.addCount"> {{login.addCount}}</span></label>
+            <label class="btn btn-default" ng-model="login.state" btn-radio="'login.edit'" ui-sref="login.edit">Edit</label>
         </div>
 
         <div ui-view="login"></div>

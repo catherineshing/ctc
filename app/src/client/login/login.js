@@ -10,9 +10,12 @@
 
         .controller('LoginController', [
             '$cookieStore',
+            '$q',
+            '$scope',
             '$state',
+            '$window',
             'CtcService',
-            function($cookieStore, $state, CtcService) {
+            function($cookieStore, $q, $scope, $state, $window, CtcService) {
                 var that = this,
                     session = 60 * 60 * 1000, // 1 hour session
                     state = $state.current.name;
@@ -42,6 +45,43 @@
                                 console.error('Authentication failed');
                             }
                         );
+                };
+
+                $scope.shareItem = function(item) {
+                    var deferred = $q.defer();
+
+                    FB.ui({
+                        method: 'share',
+                        href: item.url
+                        // quote: item.description
+                    }, function(response) {
+                        if (!response || response.error) {
+                            deferred.reject('Facebook share failed');
+                        } else {
+                            deferred.resolve(response);
+                        }
+                    });
+
+                    return deferred.promise;
+                };
+
+                $scope.tweetItem = function(item) {
+                    var windowOptions = 'scrollbars=yes,resizable=yes,toolbar=no,location=yes',
+                        width = 550,
+                        height = 253,
+                        winHeight = $window.screen.height,
+                        winWidth = $window.screen.width,
+                        left = Math.round((winWidth / 2) - (width / 2)),
+                        top = 0,
+                        url;
+
+                    if (winHeight > height) {
+                        top = Math.round((winHeight / 2) - (height / 2));
+                    }
+
+                    url = 'https://twitter.com/intent/tweet?text=' + item.description + '&url=' + item.encodedUrl + '&via=CTCJewelers';
+
+                    $window.open(url, 'intent', windowOptions + ',width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
                 };
             }
         ]);

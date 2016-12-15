@@ -1,4 +1,15 @@
 <div class="login add" ng-controller="LoginAddController as loginAdd">
+    <div class="row added-items" ng-if="loginAdd.newItems.length">
+        <div class="col-xs-12">
+            <div class="alert alert-success alert-dismissable" ng-repeat="newItem in loginAdd.newItems">
+                <button type="button" class="close" data-dismiss="alert" ng-click="loginAdd.newItems.splice($index, 1)">&times;</button>
+                <strong>Stock #{{newItem.id}} added.</strong>
+                <span class="share">Now share it!</span>
+                <a class="btn btn-sm btn-default" tooltip="Facebook" ng-click="shareItem(newItem)"><i class="glyphicon icon-facebook"></i></a>
+                <a class="btn btn-sm btn-default" tooltip="Twitter" ng-click="tweetItem(newItem)"><i class="glyphicon icon-twitter"></i></a>
+            </div>
+        </div>
+    </div>
     <div class="uploader">
         <div class="row">
             <div class="col-xs-12">

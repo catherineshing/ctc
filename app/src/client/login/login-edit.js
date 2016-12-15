@@ -19,7 +19,6 @@
                 var that = this;
 
                 $scope.login.state = $state.current.name;
-                $scope.login.addCount = 0;
 
                 this.items = [];
                 this.displayedItems = [];
@@ -36,7 +35,7 @@
 
                     modalScope.title = 'Edit Item';
                     modalScope.item = item;
-                    modalScope.idEditDisabled = true;
+                    modalScope.isNew = false;
 
                     modalInstance = $modal.open({
                         templateUrl: '/src/client/item/item-edit.tpl.html',
@@ -57,16 +56,6 @@
                                 _.merge(that.displayedItems[index], result);
                             }
                         });
-                };
-
-                this.shareItem = function(item) {
-                    FB.ui({
-                        method: 'share',
-                        href: item.url
-                        // quote: item.description
-                    }, function(response) {
-
-                    });
                 };
             }
         ]);

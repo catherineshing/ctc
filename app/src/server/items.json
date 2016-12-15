@@ -31,5 +31,17 @@
         "shape": "emerald",
         "weight": 1.2345,
         "price": "123456.00"
+    },
+    {
+        "id": "test-2",
+        "image": "/images/items/test-2.jpeg",
+        "color": "F",
+        "clarity": "VVS1",
+        "certification": "GIA",
+        "shape": "heart",
+        "weight": 1.234,
+        "price": "12345.00",
+        "onSale": true,
+        "salePrice": "11000.00"
     }
 ]

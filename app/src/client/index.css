@@ -120,9 +120,19 @@
 .ctc .login .btn-group {
   margin-bottom: 15px;
 }
-.ctc .login .badge {
-  margin-left: 5px;
-  background-color: #777;
+.ctc .login .alert {
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.ctc .login .alert button.close {
+  top: 2px;
+  right: 2px;
+}
+.ctc .login .alert .share {
+  padding-right: 5px;
+}
+.ctc .login .added-items {
+  padding-bottom: 10px;
 }
 .ctc .login .uploader {
   border: 1px dashed #ccc;

@@ -127,7 +127,7 @@ function saveItem(item) {
 
     fs.writeFileSync(itemsFile, JSON.stringify(items, null, 4));
 
-    deferred.resolve(item);
+    deferred.resolve(convertItem(item));
     console.log('END saveItem RESOLVED');
 
     return deferred.promise;
