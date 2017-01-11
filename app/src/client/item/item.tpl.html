@@ -20,7 +20,8 @@
             <div class="row">
                 <div class="col-xs-12 price-wrapper" ng-if="item.item.onSale">
                     <div>Reg. ${{item.item.price | number:2}}</div>
-                    <span class="price text-danger">Now ${{item.item.salePrice | number:2}}</span> {{item.item.salePrice/item.item.price | number:0}}% off
+                    <span class="price text-danger">Now ${{item.item.salePrice | number:2}}</span>
+                    <span ng-if="item.item.price">{{item.item.salePrice/item.item.price | number:0}}% off</span>
                 </div>
                 <div class="col-xs-12 price-wrapper" ng-if="!item.item.onSale">
                     <div class="price">${{item.item.price | number:2}}</div>
@@ -44,7 +45,9 @@
             </div>
             <div class="row">
                 <div class="col-xs-5 col-sm-3"><label>Weight:</label></div>
-                <div class="col-xs-7 col-sm-9">{{item.item.weight}}CT</div>
+                <div class="col-xs-7 col-sm-9">
+                    <span ng-if="item.item.weight">{{item.item.weight}}CT</span>
+                </div>
             </div>
         </div>
     </div>

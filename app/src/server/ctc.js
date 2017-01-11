@@ -186,14 +186,25 @@ function getArgs(args) {
 }
 
 function convertItem(item) {
+    var description = [];
+
     item.url = 'http://ctcjewelers.com/gallery/item/' + item.id;
     item.encodedUrl = encodeURIComponent(item.url);
-    item.description = [
-        item.weight + 'CT',
-        item.shape,
-        item.certification,
-        item.clarity
-    ].join(' ');
+
+    if (item.weight) {
+        description.push(item.weight + 'CT');
+    }
+    if (item.shape) {
+        description.push(item.shape);
+    }
+    if (item.certification) {
+        description.push(item.certification);
+    }
+    if (item.clarity) {
+        description.push(item.clarity);
+    }
+
+    item.description = description.join(' ');
 
     return item;
 }

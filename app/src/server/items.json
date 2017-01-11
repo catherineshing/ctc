@@ -2,6 +2,9 @@
     {
         "id": "BNJA00675-MT",
         "image": "/images/items/BNJA00675-MT.jpg",
+        "weight": 0.345,
+        "price": "1234.00",
+        "salePrice": "1000.00",
         "onSale": true
     },
     {
