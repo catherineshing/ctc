@@ -95,8 +95,14 @@
             margin-bottom: 15px;
 
             .btn {
+                padding: 3px 7px;
                 margin-right: 10px;
                 color: #fff;
+
+                i {
+                    top: 2px;
+                    font-size: 16px;
+                }
 
                 &.facebook {
                     background-color: #3b5998;
@@ -122,15 +128,17 @@
     }
 
 
-    /* Gallery, Specials */
-    .gallery, .specials {
+    /* Gallery */
+    .gallery {
         .thumbnail {
             cursor: pointer;
-            height: 250px;
+            height: 300px;
 
-            .image-wrapper {
-                max-height: 150px;
-                overflow: auto;
+            .image {
+                height: 200px;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
             }
 
             .caption {
@@ -141,7 +149,21 @@
 
 
     /* Home */
-    .home {}
+    .home {
+        .carousel-img {
+            margin: auto;
+        }
+
+        .carousel-control, .caption-text {
+            cursor: pointer;
+        }
+
+        .carousel-indicators {
+            li {
+                margin: 2px;
+            }
+        }
+    }
 
 
     /* Item */

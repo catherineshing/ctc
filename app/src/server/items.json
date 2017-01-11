@@ -1,47 +1,313 @@
 [
     {
-        "id": "id1",
-        "image": "/images/items/1.jpg",
-        "color": "D",
-        "clarity": "FL",
-        "certification": "GIA",
-        "shape": "emerald",
-        "weight": 3.456,
-        "price": "12345.00",
-        "onSale": false
+        "id": "BNJA00675-MT",
+        "image": "/images/items/BNJA00675-MT.jpg",
+        "onSale": true
     },
     {
-        "id": "id2",
-        "image": "/images/items/2.jpg",
-        "color": "D",
-        "clarity": "FL",
-        "certification": "GIA",
-        "shape": "oval",
-        "weight": 2.345,
-        "price": "12345.00",
-        "onSale": true,
-        "salePrice": "12300.00"
+        "id": "BNJA00691-MT",
+        "image": "/images/items/BNJA00691-MT.jpg",
+        "onSale": true
     },
     {
-        "id": "test-1",
-        "image": "/images/items/test-1.png",
-        "color": "E",
-        "clarity": "VVS1",
-        "certification": "AGS",
-        "shape": "emerald",
-        "weight": 1.2345,
-        "price": "123456.00"
+        "id": "BNJA00699-R",
+        "image": "/images/items/BNJA00699-R.jpg",
+        "onSale": true
     },
     {
-        "id": "test-2",
-        "image": "/images/items/test-2.jpeg",
-        "color": "F",
-        "clarity": "VVS1",
-        "certification": "GIA",
-        "shape": "heart",
-        "weight": 1.234,
-        "price": "12345.00",
-        "onSale": true,
-        "salePrice": "11000.00"
+        "id": "BNJA00738-MT",
+        "image": "/images/items/BNJA00738-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA00811-MT",
+        "image": "/images/items/BNJA00811-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA00818-MT",
+        "image": "/images/items/BNJA00818-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA00821-MT",
+        "image": "/images/items/BNJA00821-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA00872-MT",
+        "image": "/images/items/BNJA00872-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA00898-MT",
+        "image": "/images/items/BNJA00898-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA00922-MT",
+        "image": "/images/items/BNJA00922-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA00930-MT",
+        "image": "/images/items/BNJA00930-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA00939-MT",
+        "image": "/images/items/BNJA00939-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA01046-MT",
+        "image": "/images/items/BNJA01046-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA01050-MT",
+        "image": "/images/items/BNJA01050-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA01084-MT",
+        "image": "/images/items/BNJA01084-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA01089-MT",
+        "image": "/images/items/BNJA01089-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA01150-MT",
+        "image": "/images/items/BNJA01150-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA01151-MT",
+        "image": "/images/items/BNJA01151-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA01176-MT",
+        "image": "/images/items/BNJA01176-MT.jpg",
+        "onSale": true
+    },
+    {
+        "id": "BNJA01179-MT",
+        "image": "/images/items/BNJA01179-MT.jpg"
+    },
+    {
+        "id": "BNJA01252-MT",
+        "image": "/images/items/BNJA01252-MT.jpg"
+    },
+    {
+        "id": "BNJA01258-MT",
+        "image": "/images/items/BNJA01258-MT.jpg"
+    },
+    {
+        "id": "BNJA01263-MT",
+        "image": "/images/items/BNJA01263-MT.jpg"
+    },
+    {
+        "id": "BNJA01265-MT",
+        "image": "/images/items/BNJA01265-MT.jpg"
+    },
+    {
+        "id": "BNJA01310-MT",
+        "image": "/images/items/BNJA01310-MT.jpg"
+    },
+    {
+        "id": "BNJA01316-MT",
+        "image": "/images/items/BNJA01316-MT.jpg"
+    },
+    {
+        "id": "BNJA01443-MT",
+        "image": "/images/items/BNJA01443-MT.jpg"
+    },
+    {
+        "id": "BNJA01453-MT",
+        "image": "/images/items/BNJA01453-MT.jpg"
+    },
+    {
+        "id": "BNJA01459-MT",
+        "image": "/images/items/BNJA01459-MT.jpg"
+    },
+    {
+        "id": "BNJA01619-MT",
+        "image": "/images/items/BNJA01619-MT.jpg"
+    },
+    {
+        "id": "BNJA01621-MT",
+        "image": "/images/items/BNJA01621-MT.jpg"
+    },
+    {
+        "id": "BNJA01762-MT",
+        "image": "/images/items/BNJA01762-MT.jpg"
+    },
+    {
+        "id": "BNJA01765-MT",
+        "image": "/images/items/BNJA01765-MT.jpg"
+    },
+    {
+        "id": "BNJA01779-MT",
+        "image": "/images/items/BNJA01779-MT.jpg"
+    },
+    {
+        "id": "BNJA01813-Z",
+        "image": "/images/items/BNJA01813-Z.jpg"
+    },
+    {
+        "id": "BNJA01814-MT",
+        "image": "/images/items/BNJA01814-MT.jpg"
+    },
+    {
+        "id": "BNJA01852-MT",
+        "image": "/images/items/BNJA01852-MT.jpg"
+    },
+    {
+        "id": "BNJA01864-MT",
+        "image": "/images/items/BNJA01864-MT.jpg"
+    },
+    {
+        "id": "BNJA01870-MT",
+        "image": "/images/items/BNJA01870-MT.jpg"
+    },
+    {
+        "id": "BNJA01877-MT",
+        "image": "/images/items/BNJA01877-MT.jpg"
+    },
+    {
+        "id": "BNJA01878-MT",
+        "image": "/images/items/BNJA01878-MT.jpg"
+    },
+    {
+        "id": "BNJA01879-MT",
+        "image": "/images/items/BNJA01879-MT.jpg"
+    },
+    {
+        "id": "BNJA01886-MT",
+        "image": "/images/items/BNJA01886-MT.jpg"
+    },
+    {
+        "id": "BNJA01888-MT",
+        "image": "/images/items/BNJA01888-MT.jpg"
+    },
+    {
+        "id": "BNJA01928-MT",
+        "image": "/images/items/BNJA01928-MT.jpg"
+    },
+    {
+        "id": "BNJA01959-MT",
+        "image": "/images/items/BNJA01959-MT.jpg"
+    },
+    {
+        "id": "BNJA01981-MT",
+        "image": "/images/items/BNJA01981-MT.jpg"
+    },
+    {
+        "id": "BNJA02006-MT",
+        "image": "/images/items/BNJA02006-MT.jpg"
+    },
+    {
+        "id": "BNJA02008-MT",
+        "image": "/images/items/BNJA02008-MT.jpg"
+    },
+    {
+        "id": "BNJA02009-MT",
+        "image": "/images/items/BNJA02009-MT.jpg"
+    },
+    {
+        "id": "BNJA02051-MT",
+        "image": "/images/items/BNJA02051-MT.jpg"
+    },
+    {
+        "id": "BNJA03015-MT",
+        "image": "/images/items/BNJA03015-MT.jpg"
+    },
+    {
+        "id": "BNJA03018-MT",
+        "image": "/images/items/BNJA03018-MT.jpg"
+    },
+    {
+        "id": "BNJA03021-MT",
+        "image": "/images/items/BNJA03021-MT.jpg"
+    },
+    {
+        "id": "BNJM10084P",
+        "image": "/images/items/BNJM10084P.jpg"
+    },
+    {
+        "id": "BNJM10084RX",
+        "image": "/images/items/BNJM10084RX.jpg"
+    },
+    {
+        "id": "BNJM10144R",
+        "image": "/images/items/BNJM10144R.jpg"
+    },
+    {
+        "id": "BNJM10151P",
+        "image": "/images/items/BNJM10151P.jpg"
+    },
+    {
+        "id": "BNJM10816PX",
+        "image": "/images/items/BNJM10816PX.jpg"
+    },
+    {
+        "id": "BNJM10847PK",
+        "image": "/images/items/BNJM10847PK.jpg"
+    },
+    {
+        "id": "BNJM10862R",
+        "image": "/images/items/BNJM10862R.jpg"
+    },
+    {
+        "id": "BNJM11065HZ",
+        "image": "/images/items/BNJM11065HZ.jpg"
+    },
+    {
+        "id": "BNJM11298PX",
+        "image": "/images/items/BNJM11298PX.jpg"
+    },
+    {
+        "id": "BNJM11501P",
+        "image": "/images/items/BNJM11501P.jpg"
+    },
+    {
+        "id": "BNJM11559HZ",
+        "image": "/images/items/BNJM11559HZ.jpg"
+    },
+    {
+        "id": "BNJM11595PX",
+        "image": "/images/items/BNJM11595PX.jpg"
+    },
+    {
+        "id": "BNJM20065P",
+        "image": "/images/items/BNJM20065P.jpg"
+    },
+    {
+        "id": "BNJM20144E",
+        "image": "/images/items/BNJM20144E.jpg"
+    },
+    {
+        "id": "BNJM20241P-Z",
+        "image": "/images/items/BNJM20241P-Z.jpg"
+    },
+    {
+        "id": "BNJM20242P",
+        "image": "/images/items/BNJM20242P.jpg"
+    },
+    {
+        "id": "BNJM20340D",
+        "image": "/images/items/BNJM20340D.jpg"
+    },
+    {
+        "id": "BNJM20681DB",
+        "image": "/images/items/BNJM20681DB.jpg"
+    },
+    {
+        "id": "BNJM20804D",
+        "image": "/images/items/BNJM20804D.jpg"
     }
 ]

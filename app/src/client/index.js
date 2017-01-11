@@ -10,7 +10,6 @@
         'ctc.home',
         'ctc.item',
         'ctc.login',
-        'ctc.specials',
         'ctc.ctc-resource',
         'ctc.ctc-service'
     ])
@@ -64,24 +63,8 @@
                     })
                     .state('specials', {
                         url: '/specials',
-                        templateUrl: '/src/client/specials/specials.tpl.html'
+                        templateUrl: '/src/client/gallery/gallery.tpl.html'
                     });
-
-                $urlRouterProvider
-                    .when('/gallery/:id', [
-                        '$match',
-                        '$state',
-                        function($match, $state) {
-                            $state.go('item', angular.extend({parent: 'gallery'}, $match));
-                        }
-                    ])
-                    .when('/specials/:id', [
-                        '$match',
-                        '$state',
-                        function($match, $state) {
-                            $state.go('item', angular.extend({parent: 'specials'}, $match));
-                        }
-                    ])
 
                 // Default to home
                 $urlRouterProvider.otherwise(function($injector) {

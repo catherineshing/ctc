@@ -1,7 +1,7 @@
 .ctc {
   /* About */
   /* Contact */
-  /* Gallery, Specials */
+  /* Gallery */
   /* Home */
   /* Item */
   /* Login */
@@ -75,8 +75,13 @@
   margin-bottom: 15px;
 }
 .ctc .contact .links .btn {
+  padding: 3px 7px;
   margin-right: 10px;
   color: #fff;
+}
+.ctc .contact .links .btn i {
+  top: 2px;
+  font-size: 16px;
 }
 .ctc .contact .links .btn.facebook {
   background-color: #3b5998;
@@ -92,19 +97,28 @@
   border-radius: 4px;
   padding: 4px;
 }
-.ctc .gallery .thumbnail,
-.ctc .specials .thumbnail {
+.ctc .gallery .thumbnail {
   cursor: pointer;
-  height: 250px;
+  height: 300px;
 }
-.ctc .gallery .thumbnail .image-wrapper,
-.ctc .specials .thumbnail .image-wrapper {
-  max-height: 150px;
-  overflow: auto;
+.ctc .gallery .thumbnail .image {
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
-.ctc .gallery .thumbnail .caption,
-.ctc .specials .thumbnail .caption {
+.ctc .gallery .thumbnail .caption {
   padding: 3px 9px;
+}
+.ctc .home .carousel-img {
+  margin: auto;
+}
+.ctc .home .carousel-control,
+.ctc .home .caption-text {
+  cursor: pointer;
+}
+.ctc .home .carousel-indicators li {
+  margin: 2px;
 }
 .ctc .item .price-wrapper {
   margin-top: 10px;

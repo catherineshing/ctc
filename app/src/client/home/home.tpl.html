@@ -1,3 +1,10 @@
-<div class="home" ng-controller="HomeController">
-    <h4>Welcome to our website!</h4>
+<div class="home" ng-controller="HomeController as home">
+    <div carousel interval="5000">
+        <slide ng-repeat="item in home.items">
+            <img class="carousel-img" ng-src="{{item.image}}" alt="{{item.id}}">
+            <div class="carousel-caption">
+                <h4 class="caption-text" ng-bind="item.description" ng-click="home.viewItem(item.id)"></h4>
+            </div>
+        </slide>
+    </div>
 </div>

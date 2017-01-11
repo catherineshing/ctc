@@ -3,7 +3,6 @@
 var Q = require('q'),
     _ = require('lodash'),
     fs = require('fs'),
-    credentials = require('credentials'),
     itemsFile = __dirname + '/items.json';
 
 
@@ -12,7 +11,7 @@ function login(password) {
 
     var deferred = Q.defer();
 
-    if (password === 'asdf') { // credentials.ctc
+    if (password === 'asdf') {
         deferred.resolve();
         console.log('END login RESOLVED');
     } else {
@@ -24,7 +23,7 @@ function login(password) {
 }
 
 function getItems(args) {
-    console.log('BEGIN getItems');
+    console.log('BEGIN getItems ' + (args || '{}'));
 
     var deferred = Q.defer(),
         items = JSON.parse(fs.readFileSync(itemsFile, 'utf8'));
@@ -46,6 +45,10 @@ function getItems(args) {
         _.forEach(items, function(item) {
             item = convertItem(item);
         });
+    }
+
+    if (_.isNumber(args.start) && _.isNumber(args.count)) {
+        items = items.slice(args.start, args.start + args.count);
     }
 
     deferred.resolve(items);
