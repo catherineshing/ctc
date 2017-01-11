@@ -30,6 +30,9 @@
                                 <div ng-bind="index.info.address.line1"></div>
                                 <div>{{index.info.address.city}}, {{index.info.address.state}} {{index.info.address.zip}}</div>
                             </div>
+                            <div class="links">
+                                <a class="btn btn-link {{link.source}}" ng-href="{{link.url}}" target="_blank" title="{{link.source | capitalize}}" ng-repeat="link in index.info.links"><i class="glyphicon icon-{{link.source}}"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

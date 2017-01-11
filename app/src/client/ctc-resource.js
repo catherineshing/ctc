@@ -17,7 +17,21 @@
                     zip: '94103'
                 },
                 email: 'ctc94103@yahoo.com',
-                logo: '/rsrc/images/ctc.png'
+                logo: '/rsrc/images/ctc.png',
+                links: [
+                    {
+                        source: 'facebook',
+                        url: 'http://www.facebook.com/CtcJewelers'
+                    },
+                    {
+                        source: 'twitter',
+                        url: 'http://twitter.com/CTCJewelers'
+                    },
+                    {
+                        source: 'yelp',
+                        url: 'http://www.yelp.com/biz/ctc-jewelers-san-francisco'
+                    }
+                ]
             },
             Certifications: {
                 GIA: 'Gemological Institute of America',

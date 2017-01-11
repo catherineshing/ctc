@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9 links">
-                        <a class="btn btn-sm {{link.name | lowercase}}" ng-href="{{link.url}}" target="_blank" title="{{link.name}}" ng-repeat="link in contact.links"><i class="glyphicon icon-{{link.name | lowercase}}"></i></a>
+                        <a class="btn btn-sm {{link.source}}" ng-href="{{link.url}}" target="_blank" title="{{link.source | capitalize}}" ng-repeat="link in contact.info.links"><i class="glyphicon icon-{{link.source}}"></i></a>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,17 @@
   max-height: 90px;
 }
 .ctc .header .info {
-  padding-top: 10px;
+  color: #666666;
+}
+.ctc .header .btn-link {
+  color: #666666;
+  padding: 3px 8px;
+}
+.ctc .header .btn-link:hover {
+  color: #ffd966;
+}
+.ctc .header .btn-link.yelp {
+  padding-right: 3px;
 }
 .ctc .nav-bar {
   padding-top: 25px;

@@ -24,24 +24,6 @@
                     }
                 ];
 
-                this.links = [
-                    {
-                        name: 'Facebook',
-                        url: 'http://www.facebook.com/CtcJewelers',
-                        icon: '/images/facebook.png'
-                    },
-                    {
-                        name: 'Twitter',
-                        url: 'http://twitter.com/CTCJewelers',
-                        icon: '/images/twitter.png'
-                    },
-                    {
-                        name: 'Yelp',
-                        url: 'http://www.yelp.com/biz/ctc-jewelers-san-francisco',
-                        icon: '/images/yelp.png'
-                    }
-                ];
-
                 this.mapUrl = $sce.trustAsResourceUrl('https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3153.946015018397!2d-122.406611!3d37.767864!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f7e2dc2c6ae29%3A0x5bdb0112d7edab3a!2sCTC+Jewelers!5e0!3m2!1sen!2sus!4v1417765158826');
             }
         ]);
