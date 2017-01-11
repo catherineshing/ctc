@@ -1,11 +1,11 @@
 (function() {
     'use strict';
 
-    angular.module('ctc.item', [
+    angular.module('ctc.item-view', [
         'ctc.ctc-service'
     ])
 
-        .controller('ItemController', [
+        .controller('ItemViewController', [
             '$scope',
             '$stateParams',
             '$window',

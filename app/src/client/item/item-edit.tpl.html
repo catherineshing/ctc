@@ -27,7 +27,7 @@
                     <div class="form-group" ng-class="{'has-error': !form.color.$pristine && form.color.$invalid}">
                         <label class="col-sm-3">Color</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="color" ng-model="itemEdit.item.color" ng-blur="form.color.$pristine = false" required>
+                            <select class="form-control" name="color" ng-model="itemEdit.item.color" ng-blur="form.color.$pristine = false">
                                 <option value="{{color}}" ng-repeat="color in itemEdit.colors">{{color}}</option>
                             </select>
                             <div class="validation-message" ng-show="!form.color.$pristine && form.color.$invalid">
@@ -38,7 +38,7 @@
                     <div class="form-group" ng-class="{'has-error': !form.clarity.$pristine && form.clarity.$invalid}">
                         <label class="col-sm-3">Clarity</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="clarity" ng-model="itemEdit.item.clarity" ng-blur="form.clarity.$pristine = false" required>
+                            <select class="form-control" name="clarity" ng-model="itemEdit.item.clarity" ng-blur="form.clarity.$pristine = false">
                                 <option value="{{clarity}}" ng-repeat="clarity in itemEdit.clarities">{{clarity}}</option>
                             </select>
                             <div class="validation-message" ng-show="!form.clarity.$pristine && form.clarity.$invalid">
@@ -49,7 +49,7 @@
                     <div class="form-group" ng-class="{'has-error': !form.certification.$pristine && form.certification.$invalid}">
                         <label class="col-sm-3">Certification</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="certification" ng-model="itemEdit.item.certification" ng-blur="form.certification.$pristine = false" required>
+                            <select class="form-control" name="certification" ng-model="itemEdit.item.certification" ng-blur="form.certification.$pristine = false">
                                 <option value="{{key}}" ng-repeat="(key, value) in itemEdit.certifications">{{value}}</option>
                             </select>
                             <div class="validation-message" ng-show="!form.certification.$pristine && form.certification.$invalid">
@@ -62,7 +62,7 @@
                     <div class="form-group" ng-class="{'has-error': !form.shape.$pristine && form.shape.$invalid}">
                         <label class="col-sm-3">Shape</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="shape" ng-model="itemEdit.item.shape" ng-blur="form.shape.$pristine = false" required>
+                            <select class="form-control" name="shape" ng-model="itemEdit.item.shape" ng-blur="form.shape.$pristine = false">
                                 <option value="{{shape | lowercase}}" ng-repeat="shape in itemEdit.shapes">{{shape}}</option>
                             </select>
                             <div class="validation-message" ng-show="!form.shape.$pristine && form.shape.$invalid">
@@ -74,7 +74,7 @@
                         <label class="col-sm-3">Weight</label>
                         <div class="col-sm-9">
                             <div class="input-group">
-                                <input type="text" name="weight" class="form-control" ng-model="itemEdit.item.weight" required>
+                                <input type="text" name="weight" class="form-control" ng-model="itemEdit.item.weight">
                                 <div class="input-group-addon">CT</div>
                             </div>
                             <div class="validation-message" ng-show="!form.weight.$pristine && form.weight.$invalid">

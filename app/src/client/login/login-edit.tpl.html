@@ -27,7 +27,7 @@
                 <td ng-bind="item.clarity"></td>
                 <td ng-bind="item.certification"></td>
                 <td ng-bind="item.shape"></td>
-                <td>{{item.weight}}CT</td>
+                <td><span ng-if="item.weight">{{item.weight}}CT</span></td>
                 <td>${{item.price | number:2}}</td>
                 <td><span ng-if="item.onSale">${{item.salePrice | number:2}}</span></td>
                 <td class="text-right">

@@ -8,7 +8,7 @@
         'ctc.contact',
         'ctc.gallery',
         'ctc.home',
-        'ctc.item',
+        'ctc.item-view',
         'ctc.login',
         'ctc.ctc-resource',
         'ctc.ctc-service'
@@ -39,7 +39,7 @@
                     })
                     .state('item', {
                         url: '/:parent/item/:id',
-                        templateUrl: '/src/client/item/item.tpl.html'
+                        templateUrl: '/src/client/item/item-view.tpl.html'
                     })
                     .state('login', {
                         url: '/login',
