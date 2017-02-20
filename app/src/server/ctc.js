@@ -11,7 +11,7 @@ function login(password) {
 
     var deferred = Q.defer();
 
-    if (password === 'asdf') {
+    if (password === 'bernie') {
         deferred.resolve();
         console.log('END login RESOLVED');
     } else {
