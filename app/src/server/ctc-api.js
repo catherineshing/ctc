@@ -1,6 +1,6 @@
 'use strict';
 
-var ctc = require('ctc');
+var ctc = require(__dirname + '/ctc');
 
 
 function invoke(res, func, errorMessage) {
