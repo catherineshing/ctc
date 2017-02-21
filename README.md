@@ -1,8 +1,11 @@
 # ctc
 
-node app/app.js
+npm install -g nodemon
+npm install -g ejs
 
+git clone https://github.com/catherineshing/ctc
+cd ctc
+npm install
+bower install
 
-TODO:
-- max upload size
-- add overlay while promise is working
+nodemon app/app.js
