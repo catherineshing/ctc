@@ -5,6 +5,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     consolidate = require('consolidate'),
     multipart = require('connect-multiparty'),
+    info = require(__dirname + '/src/server/info.json'),
     app = express(),
     api;
 
@@ -26,7 +27,10 @@ api = require('ctc-api')(app);
 
 // application
 app.get('*', function(req, res) {
-    res.render('index.html');
+    res.render('index.html', {
+        info: info,
+        infoStr: JSON.stringify(info)
+    });
 });
 
 // listen

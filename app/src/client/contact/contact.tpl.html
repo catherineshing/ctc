@@ -3,25 +3,25 @@
         <div class="col-sm-6 contact-info">
             <div class="form form-horizontal">
                 <div class="form-group">
-                    <div class="col-xs-12" ng-bind="contact.description"></div>
+                    <div class="col-xs-12" ng-bind="info.description"></div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-3"><label>Address:</label></div>
                     <div class="col-sm-9">
                         <div>San Francisco Jewelry Center</div>
-                        <div ng-bind="contact.info.address.line1"></div>
-                        <div>{{contact.info.address.city}}, {{contact.info.address.state}} {{contact.info.address.zip}}</div>
-                        <div ng-bind="contact.info.address.line2"></div>
+                        <div ng-bind="info.address.line1"></div>
+                        <div>{{info.address.city}}, {{info.address.state}} {{info.address.zip}}</div>
+                        <div ng-bind="info.address.line2"></div>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-3"><label>Telephone:</label></div>
-                    <div class="col-sm-9" ng-bind="contact.info.phone"></div>
+                    <div class="col-sm-9" ng-bind="info.phone"></div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-3"><label>Email:</label></div>
                     <div class="col-sm-9">
-                        <a ng-href="mailto:{{contact.info.email}}" ng-bind="contact.info.email"></a>
+                        <a ng-href="mailto:{{info.email}}" ng-bind="info.email"></a>
                     </div>
                 </div>
                 <div class="form-group">
@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-9 links">
-                        <a class="btn btn-sm {{link.source}}" ng-href="{{link.url}}" target="_blank" title="{{link.source | capitalize}}" ng-repeat="link in contact.info.links"><i class="glyphicon icon-{{link.source}}"></i></a>
+                        <a class="btn btn-sm {{link.source}}" ng-href="{{link.url}}" target="_blank" title="{{link.source | capitalize}}" ng-repeat="link in info.links"><i class="glyphicon icon-{{link.source}}"></i></a>
                     </div>
                 </div>
             </div>

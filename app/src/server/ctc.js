@@ -2,16 +2,19 @@
 
 var Q = require('q'),
     _ = require('lodash'),
+    crypto = require('crypto'),
     fs = require('fs'),
+    info = require(__dirname + '/info.json'),
     itemsFile = __dirname + '/items.json';
 
 
 function login(password) {
     console.log('BEGIN login');
 
-    var deferred = Q.defer();
+    var deferred = Q.defer(),
+        hash = crypto.createHash('sha256').update(password).digest('hex');
 
-    if (password === 'bernie') {
+    if (hash === info.login) {
         deferred.resolve();
         console.log('END login RESOLVED');
     } else {

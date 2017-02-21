@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ctc" class="no-js">
+<html lang="en" ng-app="ctc" class="no-js" itemscope itemtype="http://schema.org/JewelryStore">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <base href="/" />
 
-        <title>CTC Jewelers</title>
+        <title itemprop="name"><%= info.name %></title>
         <link rel="icon" href="/rsrc/images/ctc-icon.png">
 
-        <meta name="description" content="">
+        <meta name="url" itemprop="url" content="<%= info.url %>">
+        <meta name="image" itemprop="image" content="<%= info.url %><%= info.logo %>">
+        <meta name="priceRange" itemprop="priceRange" content="$$$">
+        <meta name="openingHours" itemprop="openingHours" content="Mo,Tu,We,Th,Fri 10:00-17:00">
+        <meta name="description" itemprop="description" content="<%= info.description %>">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
@@ -17,21 +21,23 @@
         <link rel="stylesheet" href="/src/client/index.css">
     </head>
     <body>
-        <div class="ctc" ng-controller="IndexController as index">
+        <div class="ctc" ng-controller="IndexController as index" ng-init="index.init('<%= infoStr %>')">
             <div class="header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <a href="home" ng-click="index.loadTab({path: 'home'})"><img ng-src="{{index.info.logo}}" class="name" alt="{{index.info.name}}"></a>
+                        <a href="home" ng-click="index.loadTab({path: 'home'})"><img ng-src="{{info.logo}}" class="name" alt="{{info.name}}"></a>
                     </div>
                     <div class="col-sm-6">
                         <div class="hidden-xs text-right info">
-                            <div class="phone" ng-bind="index.info.phone"></div>
-                            <div class="address">
-                                <div ng-bind="index.info.address.line1"></div>
-                                <div>{{index.info.address.city}}, {{index.info.address.state}} {{index.info.address.zip}}</div>
+                            <div class="phone" itemprop="telephone"><%= info.phone %></div>
+                            <div class="address" itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                <div itemprop="streetAddress"><%= info.address.line1 %></div>
+                                <span itemprop="addressLocality"><%= info.address.city %></span>,
+                                <span itemprop="addressRegion"><%= info.address.state %></span>
+                                <span itemprop="postalCode"><%= info.address.zip %></span>
                             </div>
                             <div class="links">
-                                <a class="btn btn-link {{link.source}}" ng-href="{{link.url}}" target="_blank" title="{{link.source | capitalize}}" ng-repeat="link in index.info.links"><i class="glyphicon icon-{{link.source}}"></i></a>
+                                <a class="btn btn-link {{link.source}}" ng-href="{{link.url}}" target="_blank" title="{{link.source | capitalize}}" ng-repeat="link in info.links"><i class="glyphicon icon-{{link.source}}"></i></a>
                             </div>
                         </div>
                     </div>

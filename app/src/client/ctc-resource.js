@@ -6,33 +6,6 @@
     ])
 
         .constant('CtcConstant', {
-            BusinessInfo: {
-                name: 'CTC Jewelers',
-                phone: '(415) 255-1839',
-                address: {
-                    line1: '101 Utah St., Suite 108',
-                    line2: '(between Alameda St. and 15th St.)',
-                    city: 'San Francisco',
-                    state: 'CA',
-                    zip: '94103'
-                },
-                email: 'ctc94103@yahoo.com',
-                logo: '/rsrc/images/ctc.png',
-                links: [
-                    {
-                        source: 'facebook',
-                        url: 'http://www.facebook.com/CtcJewelers'
-                    },
-                    {
-                        source: 'twitter',
-                        url: 'http://twitter.com/CTCJewelers'
-                    },
-                    {
-                        source: 'yelp',
-                        url: 'http://www.yelp.com/biz/ctc-jewelers-san-francisco'
-                    }
-                ]
-            },
             Certifications: {
                 GIA: 'Gemological Institute of America',
                 AGS: 'American Gem Society Laboratories',

@@ -90,8 +90,8 @@
         .controller('IndexController', [
             '$anchorScroll',
             '$location',
-            'CtcConstant',
-            function($anchorScroll, $location, CtcConstant) {
+            '$scope',
+            function($anchorScroll, $location, $scope) {
                 var that = this,
                     path = $location.path().substr(1);
 
@@ -125,7 +125,9 @@
 
                 this.tab = path.length ? path : 'home';
 
-                this.info = CtcConstant.BusinessInfo;
+                this.init = function(info) {
+                    $scope.info = JSON.parse(info);
+                };
 
                 this.loadTab = function(tab) {
                     that.tab = tab.path;

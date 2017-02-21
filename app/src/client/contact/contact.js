@@ -2,17 +2,11 @@
     'use strict';
 
     angular.module('ctc.contact', [
-        'ctc.ctc-resource'
     ])
 
         .controller('ContactController', [
             '$sce',
-            'CtcConstant',
-            function($sce, CtcConstant) {
-                this.info = CtcConstant.BusinessInfo;
-
-                this.description = 'We are located in the San Francisco Jewelry Center, which is open to wholesale customers only. Please feel free to contact us with any questions or to schedule an appointment.';
-
+            function($sce) {
                 this.hours = [
                     {
                         day: 'Mon-Fri',
