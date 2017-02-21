@@ -52,7 +52,7 @@
         </div>
     </div>
     <ul class="pager">
-        <li class="previous" ng-show="item.item.previous"><a ng-href="/{{item.parentState}}/item/{{item.item.previous}}">&larr; Previous</a></li>
-        <li class="next" ng-show="item.item.next"><a ng-href="/{{item.parentState}}/item/{{item.item.next}}">&rarr; Next</a></li>
+        <li class="previous" ng-show="item.item.previous"><a ui-sref="item({id: item.item.previous})">&larr; Previous</a></li>
+        <li class="next" ng-show="item.item.next"><a ui-sref="item({id: item.item.next})">&rarr; Next</a></li>
     </ul>
 </div>
