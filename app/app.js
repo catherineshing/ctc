@@ -23,7 +23,7 @@ app.set('view engine', 'html');
 app.set('views', __dirname + '/src/client');
 
 // api
-api = require('ctc-api')(app);
+api = require(__dirname + '/src/server/ctc-api')(app);
 
 // application
 app.get('*', function(req, res) {
