@@ -37,18 +37,15 @@ function getItems(args) {
         items = _.filter(items, 'onSale');
     }
 
-    if (args.tmp) {
-        var tmpFiles = fs.readdirSync(__dirname + '/images/tmp/');
-        items = _.map(tmpFiles, function(tmpFile) {
-            return {
-                image: '/images/tmp/' + tmpFile
-            };
-        });
-    } else {
-        _.forEach(items, function(item) {
-            item = convertItem(item);
+    if (args.category) {
+        items = _.filter(items, function(item) {
+            return item.category === args.category;
         });
     }
+
+    _.forEach(items, function(item) {
+        item = convertItem(item);
+    });
 
     if (_.isNumber(args.start) && _.isNumber(args.count)) {
         items = items.slice(args.start, args.start + args.count);
@@ -99,31 +96,40 @@ function saveItem(item) {
 
     var deferred = Q.defer(),
         items = JSON.parse(fs.readFileSync(itemsFile, 'utf8')),
-        extension = item.image.split('.').pop(),
-        filename = '/images/items/' + item.id + '.' + extension,
+        baseFilename = '/images/items/' + item.id,
         itemIndex,
-        existingImage;
+        fileIndex,
+        extension,
+        filename,
+        source,
+        destination;
 
     _.forEach(items, function(existingItem, index) {
         if (item.id === existingItem.id) {
             itemIndex = index;
-            existingImage = existingItem.image;
             return;
         }
     });
 
-    if (item.image.indexOf('/tmp/') !== -1) {
-        var source = __dirname + item.image,
+    _.forEach(item.images, function(image, index) {
+        if (_.includes(image, '/tmp/')) {
+            fileIndex = 1;
+            extension = image.split('.').pop();
+            filename = baseFilename + '-' + (fileIndex) + '.' + extension;
+
+            source = __dirname + image;
             destination = __dirname + filename;
 
-        if (existingImage && fs.existsSync(__dirname + existingImage)) {
-            fs.unlinkSync(__dirname + existingImage);
+            while (fs.existsSync(destination)) {
+                filename = baseFilename + '-' + (++fileIndex) + '.' + extension;
+                destination = __dirname + filename;
+            }
+
+            moveFile(source, destination, function() {});
+
+            item.images[index] = filename;
         }
-
-        moveFile(source, destination, function() {});
-    }
-
-    item.image = filename;
+    });
 
     if (_.isUndefined(itemIndex)) {
         items.push(item);
@@ -145,17 +151,18 @@ function deleteItem(item) {
     var deferred = Q.defer(),
         items = JSON.parse(fs.readFileSync(itemsFile, 'utf8'));
 
-    fs.unlinkSync(__dirname + item.image);
+    _.forEach(items, function(existingItem, index) {
+        if (item.id === existingItem.id) {
+            _.forEach(existingItem.images, function(image) {
+                fs.unlinkSync(__dirname + image);
+            });
 
-    if (item.id) {
-        _.forEach(items, function(existingItem, index) {
-            if (item.id === existingItem.id) {
-                items.splice(index, 1);
-                fs.writeFileSync(itemsFile, JSON.stringify(items, null, 4));
-                return;
-            }
-        });
-    }
+            items.splice(index, 1);
+            fs.writeFileSync(itemsFile, JSON.stringify(items, null, 4));
+
+            return;
+        }
+    });
 
     deferred.resolve();
     console.log('END deleteItem RESOLVED');
@@ -176,6 +183,19 @@ function saveImage(file) {
         deferred.resolve(filename);
         console.log('END saveImage RESOLVED');
     });
+
+    return deferred.promise;
+}
+
+function deleteImage(file) {
+    console.log('BEGIN deleteImage');
+
+    var deferred = Q.defer();
+
+    fs.unlinkSync(__dirname + file);
+
+    deferred.resolve();
+    console.log('END deleteImage RESOLVED');
 
     return deferred.promise;
 }
@@ -234,6 +254,7 @@ module.exports = {
     getItem: getItem,
     saveItem: saveItem,
     deleteItem: deleteItem,
-    saveImage: saveImage
+    saveImage: saveImage,
+    deleteImage: deleteImage
 
 };

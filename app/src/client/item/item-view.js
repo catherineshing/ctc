@@ -2,33 +2,27 @@
     'use strict';
 
     angular.module('ctc.item-view', [
-        'ngTouch',
         'ctc.ctc-service'
     ])
 
         .controller('ItemViewController', [
+            '$anchorScroll',
             '$scope',
             '$state',
             '$stateParams',
-            '$window',
             'CtcService',
-            function($scope, $state, $stateParams, $window, CtcService) {
+            function($anchorScroll, $scope, $state, $stateParams, CtcService) {
                 var that = this;
 
-                angular.element($window).off('scroll');
+                $anchorScroll();
 
                 $scope.index.tab = $stateParams.parent;
 
                 CtcService.getItem($stateParams.id, {onSale: $stateParams.parent === 'specials'})
                     .then(function(item) {
                         that.item = item;
+                        that.image = item.images[0];
                     });
-
-                this.goToItem = function(itemId) {
-                    if (itemId) {
-                        $state.go('item', {id: itemId});
-                    }
-                };
             }
         ]);
 

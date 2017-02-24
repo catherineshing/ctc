@@ -107,18 +107,18 @@
   border-radius: 4px;
   padding: 4px;
 }
-.ctc .gallery .thumbnail {
+.ctc .gallery .nav-pills > li.active > a,
+.ctc .gallery .dropdown-menu > li.active > a {
+  background-color: #666666;
+}
+.ctc .gallery .nav-pills > li,
+.ctc .gallery .dropdown-menu > li,
+.ctc .gallery .pager > li {
   cursor: pointer;
-  height: 300px;
 }
-.ctc .gallery .thumbnail .image {
-  height: 200px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-.ctc .gallery .thumbnail .caption {
-  padding: 3px 9px;
+.ctc .gallery .dropdown {
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 .ctc .home .carousel-img {
   margin: auto;
@@ -141,69 +141,82 @@
 .ctc .item .stock {
   margin-top: 0;
 }
-.ctc .login .btn-group {
-  margin-bottom: 15px;
+.ctc .login .filter .btn {
+  margin-right: 10px;
 }
-.ctc .login .alert {
-  padding: 10px;
-  margin-bottom: 10px;
+/* Item */
+.item .main {
+  margin-bottom: 0;
 }
-.ctc .login .alert button.close {
-  top: 2px;
-  right: 2px;
+.item .image {
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
-.ctc .login .alert .share {
-  padding-right: 5px;
+.item .preview {
+  cursor: pointer;
+  width: 25%;
+  height: 75px;
+  display: inline-block;
+  margin-bottom: -5px;
 }
-.ctc .login .added-items {
-  padding-bottom: 10px;
+.item .preview.active {
+  border-color: #ffd966;
 }
-.ctc .login .uploader {
+.item.edit .preview {
+  cursor: move;
+  position: relative;
+}
+.item.edit .checkbox {
+  margin-left: -10px;
+}
+.item.edit .checkbox label {
+  color: #333;
+}
+.item.edit .uploader {
   border: 1px dashed #ccc;
 }
-.ctc .login .uploader .drop-area {
+.item.edit .uploader .drop-area {
   padding: 10px;
   min-height: 100px;
 }
-.ctc .login .uploader .header {
+.item.edit .uploader .header {
   padding-bottom: 12px;
 }
-.ctc .login .uploader .header i {
+.item.edit .uploader .header i {
   top: 2px;
   padding-right: 2px;
   font-size: 18px;
 }
-.ctc .login .uploader .header .btn-link {
+.item.edit .uploader .header .btn-link {
   padding-left: 0;
   margin-top: -2px;
 }
-.ctc .login .uploader .error-message {
+.item.edit .uploader .error-message {
   margin-bottom: 15px;
   white-space: pre;
 }
-.ctc .login .uploader .thumbnail {
-  cursor: pointer;
-}
-.ctc .login .uploader .glyphicon-pencil {
+.item.edit .uploader .glyphicon-remove {
   cursor: pointer;
   position: absolute;
-  top: 10px;
-  right: 25px;
+  top: 6px;
+  right: 6px;
   color: #fff;
+}
+.item.thumbnail {
+  cursor: pointer;
+  height: 300px;
+}
+.item.thumbnail .image {
+  height: 200px;
+}
+.item.thumbnail .caption {
+  padding: 3px 9px;
+}
+.item.view .images {
+  margin-bottom: 15px;
 }
 body {
   padding: 20px;
-}
-/* Item Edit */
-.item-edit .preview .thumbnail {
-  margin-bottom: 0;
-}
-.item-edit .btn-link {
-  padding: 4px;
-}
-.item-edit .checkbox {
-  margin-left: -10px;
-}
-.item-edit .checkbox label {
-  color: #333;
 }

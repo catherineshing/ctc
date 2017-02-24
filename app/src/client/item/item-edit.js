@@ -8,28 +8,27 @@
     ])
 
         .controller('ItemEditController', [
+            '_',
             '$modalInstance',
             '$scope',
             'CtcConstant',
             'CtcService',
             'Upload',
-            function($modalInstance, $scope, CtcConstant, CtcService, Upload) {
-                var that = this;
+            function(_, $modalInstance, $scope, CtcConstant, CtcService, Upload) {
+                var that = this,
+                    deletedImages = [];
 
-                this.item = {};
-                angular.copy($scope.item, this.item);
+                this.item = $scope.item;
 
                 this.options = {
                     accept: 'image/*',
-                    maxFiles: 1,
+                    maxFiles: 20,
                     maxSize: '20MB',
-                    multiple: false,
-                    resize: {
-                        width: 500,
-                        height: 500
-                    }
+                    multiple: true,
+                    allowDir: true
                 };
 
+                this.categories = CtcConstant.Categories;
                 this.certifications = CtcConstant.Certifications;
                 this.clarities = CtcConstant.Clarities;
                 this.colors = CtcConstant.Colors;
@@ -37,34 +36,44 @@
 
                 this.priceRegex = '\\d+(\\.\\d{2})?';
 
-                this.changeImage = function(file, item) {
-                    file.progress = 0;
+                this.uploadFiles = function(files, invalidFiles) {
+                    delete that.uploadError;
 
-                    Upload.upload({
-                        url: '/api/items/image',
-                        method: 'POST',
-                        file: file
-                    })
-                    .then(
-                        function(response) {
-                            that.item.image = response.data;
-                        },
-                        function(error) {
-                            file.error = error;
-                        },
-                        function(event) {
-                            file.progress = Math.min(100, parseInt(100.0 * event.loaded / event.total, 10));
+                    if (!_.isEmpty(files)) {
+                        _.forEach(files, function(file) {
+                            file.progress = 0;
+
+                            Upload.upload({
+                                url: '/api/items/image',
+                                method: 'POST',
+                                file: file
+                            })
+                            .then(
+                                function(response) {
+                                    that.item.images.push(response.data);
+                                },
+                                function(error) {
+                                    file.error = error;
+                                },
+                                function(event) {
+                                    file.progress = Math.min(100, parseInt(100.0 * event.loaded / event.total, 10));
+                                });
                         });
+                    } else if (!_.isEmpty(invalidFiles)) {
+                        that.uploadError = 'Invalid file(s): ' + _.pluck(invalidFiles, 'name').join(', ');
+                    }
                 };
 
-                this.deleteItem = function(item) {
-                    CtcService.deleteItem(item)
-                        .then(function() {
-                            $modalInstance.close({deleted: true});
-                        });
+                this.deleteImage = function(index, image) {
+                    deletedImages.push(image);
+                    that.item.images.splice(index, 1);
                 };
 
                 this.saveItem = function(item) {
+                    _.forEach(deletedImages, function(deletedImage) {
+                        CtcService.deleteImage(deletedImage);
+                    });
+
                     CtcService.saveItem(item)
                         .then(function(result) {
                             $modalInstance.close(result);

@@ -17,11 +17,53 @@
     </form>
 
     <div ng-if="login.isAuthenticated">
-        <div class="btn-group">
-            <label class="btn btn-default" ng-model="login.state" btn-radio="'login.add'" ui-sref="login.add">Add</label>
-            <label class="btn btn-default" ng-model="login.state" btn-radio="'login.edit'" ui-sref="login.edit">Edit</label>
-        </div>
-
-        <div ui-view="login"></div>
+        <table class="table table-striped" st-table="login.displayedItems" st-safe-src="login.items">
+            <thead>
+                <tr class="filter">
+                    <th colspan="9">
+                        <span class="form-group pull-right">
+                            <input type="search" class="form-control" st-search st-delay="100" placeholder="Search"/>
+                        </span>
+                        <button type="button" class="btn btn-default pull-right" ng-click="login.addItem()"><i class="glyphicon glyphicon-plus"></i> Add Item</button>
+                    </th>
+                </tr>
+                <tr class="header">
+                    <th st-sort="id" st-skip-natural="true" st-sort-default="true">Stock #</th>
+                    <th st-sort="color" st-skip-natural="true">Color</th>
+                    <th st-sort="clarity" st-skip-natural="true">Clarity</th>
+                    <th st-sort="certification" st-skip-natural="true">Certification</th>
+                    <th st-sort="shape" st-skip-natural="true">Shape</th>
+                    <th st-sort="weight" st-skip-natural="true">Weight</th>
+                    <th st-sort="price" st-skip-natural="true">Price</th>
+                    <th st-sort="salePrice" st-skip-natural="true">Sale Price</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in login.displayedItems">
+                    <td ng-bind="item.id"></td>
+                    <td ng-bind="item.color"></td>
+                    <td ng-bind="item.clarity"></td>
+                    <td ng-bind="item.certification"></td>
+                    <td ng-bind="item.shape"></td>
+                    <td><span ng-if="item.weight">{{item.weight}}CT</span></td>
+                    <td>${{item.price | number:2}}</td>
+                    <td><span ng-if="item.onSale">${{item.salePrice | number:2}}</span></td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-sm btn-default" tooltip="Edit" ng-click="login.editItem($index, item)"><i class="glyphicon glyphicon-pencil"></i></button>
+                        <a class="btn btn-sm btn-default" tooltip="Facebook" ng-click="login.shareItem(item)"><i class="glyphicon icon-facebook"></i></a>
+                        <a class="btn btn-sm btn-default" tooltip="Twitter" ng-click="login.tweetItem(item)"><i class="glyphicon icon-twitter"></i></a>
+                        <button type="button" class="btn btn-sm btn-danger" tooltip="Delete" ng-click="login.deleteItem($index, item)"><i class="glyphicon glyphicon-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="9" class="text-center">
+                        <div st-pagination="" st-items-by-page="50"></div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
 </div>

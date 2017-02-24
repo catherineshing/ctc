@@ -45,22 +45,6 @@
                         url: '/login',
                         templateUrl: '/src/client/login/login.tpl.html'
                     })
-                    .state('login.add', {
-                        url: '/add',
-                        views: {
-                            'login': {
-                                templateUrl: '/src/client/login/login-add.tpl.html'
-                            }
-                        }
-                    })
-                    .state('login.edit', {
-                        url: '/edit',
-                        views: {
-                            'login': {
-                                templateUrl: '/src/client/login/login-edit.tpl.html'
-                            }
-                        }
-                    })
                     .state('specials', {
                         url: '/specials',
                         templateUrl: '/src/client/gallery/gallery.tpl.html'

@@ -6,6 +6,11 @@
     ])
 
         .constant('CtcConstant', {
+            Categories: [
+                'Engagement Rings',
+                'Wedding Bands',
+                'Other'
+            ],
             Certifications: {
                 GIA: 'Gemological Institute of America',
                 AGS: 'American Gem Society Laboratories',

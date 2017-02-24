@@ -3,21 +3,25 @@
 
     angular.module('ctc.gallery', [
         'ctc.item-thumbnail',
+        'ctc.ctc-resource',
         'ctc.ctc-service'
     ])
 
         .controller('GalleryController', [
+            '$anchorScroll',
             '$state',
-            '$window',
+            'CtcConstant',
             'CtcService',
-            function($state, $window, CtcService) {
+            function($anchorScroll, $state, CtcConstant, CtcService) {
                 var that = this,
+                    count = 24,
                     args = {
                         start: 0,
-                        count: 18
+                        count: count + 1
                     };
 
-                this.items = [];
+                this.hasPrev = false;
+                this.hasNext = true;
 
                 switch ($state.current.name) {
                     case 'gallery':
@@ -30,27 +34,44 @@
                         break;
                 }
 
-                function getItems(args) {
+                this.categories = CtcConstant.Categories;
+
+                function getItems() {
                     CtcService.getItems(args)
                         .then(
                             function(items) {
-                                that.items = that.items.concat(items);
+                                that.hasPrev = args.start > 0;
+                                that.hasNext = items.length > count;
 
-                                if (items.length < args.count) {
-                                    angular.element($window).off('scroll');
+                                if (that.hasNext) {
+                                    items.pop();
                                 }
+
+                                that.items = items;
+
+                                $anchorScroll();
                             }
                         );
                 }
 
-                getItems(args);
+                getItems();
 
-                angular.element($window).on('scroll', function() {
-                    if (this.pageYOffset >= 100) {
-                        args.start += args.count;
-                        getItems(args);
-                    }
-                });
+                this.getCategory = function(category) {
+                    that.category = category;
+                    args.category = category;
+
+                    getItems();
+                };
+
+                this.getPrevPage = function() {
+                    args.start -= count;
+                    getItems();
+                };
+
+                this.getNextPage = function() {
+                    args.start += count;
+                    getItems();
+                };
             }
         ]);
 

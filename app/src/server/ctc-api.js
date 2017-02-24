@@ -72,6 +72,14 @@ function saveImage(req, res) {
         }, 'Failed to save image');
 }
 
+function deleteImage(req, res) {
+    var file = req.body.file;
+
+    return invoke(res, function() {
+            return ctc.deleteImage(file);
+        }, 'Failed to delete image');
+}
+
 
 module.exports = function(app) {
 
@@ -81,5 +89,6 @@ module.exports = function(app) {
     app.post('/api/items', saveItem);
     app.delete('/api/items', deleteItem);
     app.post('/api/items/image', saveImage);
+    app.delete('/api/items/image', deleteImage);
 
 };

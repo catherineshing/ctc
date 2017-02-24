@@ -1,3 +1,6 @@
+@ctc-yellow: rgb(255, 217, 102);
+@ctc-gray: rgb(102, 102, 102);
+
 .ctc {
     .header {
         padding-bottom: 15px;
@@ -11,15 +14,15 @@
         }
 
         .info {
-            color: rgb(102, 102, 102);
+            color: @ctc-gray;
         }
 
         .btn-link {
-            color: rgb(102, 102, 102);
+            color: @ctc-gray;
             padding: 3px 8px;
 
             &:hover {
-                color: rgb(255, 217, 102);
+                color: @ctc-yellow;
             }
 
             &.yelp {
@@ -143,20 +146,20 @@
 
     /* Gallery */
     .gallery {
-        .thumbnail {
+        .nav-pills > li.active > a,
+        .dropdown-menu > li.active > a {
+            background-color: @ctc-gray;
+        }
+
+        .nav-pills > li,
+        .dropdown-menu > li,
+        .pager > li {
             cursor: pointer;
-            height: 300px;
+        }
 
-            .image {
-                height: 200px;
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center center;
-            }
-
-            .caption {
-                padding: 3px 9px;
-            }
+        .dropdown {
+            margin-top: -10px;
+            margin-bottom: 10px;
         }
     }
 
@@ -199,26 +202,51 @@
 
     /* Login */
     .login {
-        .btn-group {
-            margin-bottom: 15px;
-        }
-
-        .alert {
-            padding: 10px;
-            margin-bottom: 10px;
-
-            button.close {
-                top: 2px;
-                right: 2px;
-            }
-
-            .share {
-                padding-right: 5px;
+        .filter {
+            .btn {
+                margin-right: 10px;
             }
         }
+    }
+}
 
-        .added-items {
-            padding-bottom: 10px;
+/* Item */
+.item {
+    .main {
+        margin-bottom: 0;
+    }
+
+    .image {
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .preview {
+        cursor: pointer;
+        width: 25%;
+        height: 75px;
+        display: inline-block;
+        margin-bottom: -5px;
+
+        &.active {
+            border-color: @ctc-yellow;
+        }
+    }
+
+    &.edit {
+        .preview {
+            cursor: move;
+            position: relative;
+        }
+
+        .checkbox {
+            margin-left: -10px;
+
+            label {
+                color: #333;
+            }
         }
 
         .uploader {
@@ -249,42 +277,36 @@
                 white-space: pre;
             }
 
-            .thumbnail {
-                cursor: pointer;
-            }
-
-            .glyphicon-pencil {
+            .glyphicon-remove {
                 cursor: pointer;
                 position: absolute;
-                top: 10px;
-                right: 25px;
+                top: 6px;
+                right: 6px;
                 color: #fff;
             }
+        }
+    }
+
+    &.thumbnail {
+        cursor: pointer;
+        height: 300px;
+
+        .image {
+            height: 200px;
+        }
+
+        .caption {
+            padding: 3px 9px;
+        }
+    }
+
+    &.view {
+        .images {
+            margin-bottom: 15px;
         }
     }
 }
 
 body {
     padding: 20px;
-}
-
-/* Item Edit */
-.item-edit {
-    .preview {
-        .thumbnail {
-            margin-bottom: 0;
-        }
-    }
-
-    .btn-link {
-        padding: 4px;
-    }
-
-    .checkbox {
-        margin-left: -10px;
-
-        label {
-            color: #333;
-        }
-    }
 }

@@ -37,7 +37,8 @@
                 function saveItem(item) {
                     var params = {
                         id: item.id,
-                        image: item.image,
+                        images: item.images,
+                        category: item.category,
                         color: item.color,
                         clarity: item.clarity,
                         certification: item.certification,
@@ -60,7 +61,20 @@
                         url: '/api/items',
                         data: {
                             id: item.id,
-                            image: item.image
+                            images: item.images
+                        },
+                        headers: {
+                            'Content-Type': 'application/json;charset=utf-8'
+                        }
+                    });
+                }
+
+                function deleteImage(image) {
+                    return $http({
+                        method: 'DELETE',
+                        url: '/api/items/image',
+                        data: {
+                            file: image
                         },
                         headers: {
                             'Content-Type': 'application/json;charset=utf-8'
@@ -73,7 +87,8 @@
                     getItems: getItems,
                     getItem: getItem,
                     saveItem: saveItem,
-                    deleteItem: deleteItem
+                    deleteItem: deleteItem,
+                    deleteImage: deleteImage
                 };
             }
         ]);
