@@ -3,6 +3,7 @@
 
     angular.module('ctc.item-edit', [
         'ngFileUpload',
+        'ui.sortable',
         'ctc.ctc-resource',
         'ctc.ctc-service'
     ])
@@ -11,11 +12,13 @@
             '_',
             '$modalInstance',
             '$scope',
+            '$timeout',
             'CtcConstant',
             'CtcService',
             'Upload',
-            function(_, $modalInstance, $scope, CtcConstant, CtcService, Upload) {
+            function(_, $modalInstance, $scope, $timeout, CtcConstant, CtcService, Upload) {
                 var that = this,
+                    uploadedImages = [],
                     deletedImages = [];
 
                 this.item = $scope.item;
@@ -25,7 +28,14 @@
                     maxFiles: 20,
                     maxSize: '20MB',
                     multiple: true,
-                    allowDir: true
+                    allowDir: true,
+                    resize: {
+                        width: 500,
+                        height: 500
+                    }
+                };
+                this.uploader = {
+                    $invalid: false
                 };
 
                 this.categories = CtcConstant.Categories;
@@ -50,7 +60,10 @@
                             })
                             .then(
                                 function(response) {
+                                    uploadedImages.push(response.data);
                                     that.item.images.push(response.data);
+
+                                    that.uploader.$invalid = false;
                                 },
                                 function(error) {
                                     file.error = error;
@@ -67,17 +80,40 @@
                 this.deleteImage = function(index, image) {
                     deletedImages.push(image);
                     that.item.images.splice(index, 1);
+
+                    that.uploader.$invalid = _.isEmpty(that.item.images);
+                };
+
+                this.cancel = function() {
+                    _.forEach(uploadedImages, function(uploadedImage) {
+                        CtcService.deleteImage(uploadedImage);
+                    });
+
+                    $modalInstance.dismiss();
                 };
 
                 this.saveItem = function(item) {
-                    _.forEach(deletedImages, function(deletedImage) {
-                        CtcService.deleteImage(deletedImage);
-                    });
-
-                    CtcService.saveItem(item)
-                        .then(function(result) {
-                            $modalInstance.close(result);
+                    if ($scope.form.$invalid) {
+                        _.forEach($scope.form.$error, function(controls) {
+                            _.forEach(controls, function(control) {
+                                control.$pristine = false;
+                            });
                         });
+                        that.uploader.$invalid = _.isEmpty(that.item.images);
+
+                        $timeout(function() {
+                            $scope.$apply();
+                        });
+                    } else {
+                        _.forEach(deletedImages, function(deletedImage) {
+                            CtcService.deleteImage(deletedImage);
+                        });
+
+                        CtcService.saveItem(item)
+                            .then(function(result) {
+                                $modalInstance.close(result);
+                            });
+                    }
                 };
             }
         ]);

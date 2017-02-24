@@ -97,8 +97,8 @@ function saveItem(item) {
     var deferred = Q.defer(),
         items = JSON.parse(fs.readFileSync(itemsFile, 'utf8')),
         baseFilename = '/images/items/' + item.id,
+        fileIndex = 1,
         itemIndex,
-        fileIndex,
         extension,
         filename,
         source,
@@ -113,7 +113,6 @@ function saveItem(item) {
 
     _.forEach(item.images, function(image, index) {
         if (_.includes(image, '/tmp/')) {
-            fileIndex = 1;
             extension = image.split('.').pop();
             filename = baseFilename + '-' + (fileIndex) + '.' + extension;
 

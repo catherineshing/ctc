@@ -132,13 +132,26 @@
                 };
 
                 this.deleteItem = function(index, item) {
-                    CtcService.deleteItem(item)
-                        .then(function() {
-                            that.displayedItems.splice(index, 1);
+                    var modalInstance,
+                        modalScope = $rootScope.$new();
 
-                            _.remove(that.items, function(i) {
-                                return item.id === i.id;
-                            });
+                    modalInstance = $modal.open({
+                        templateUrl: '/src/client/item/item-delete.tpl.html',
+                        size: 'sm',
+                        animate: false,
+                        scope: modalScope
+                    });
+
+                    modalInstance.result
+                        .then(function() {
+                             CtcService.deleteItem(item)
+                                .then(function() {
+                                    that.displayedItems.splice(index, 1);
+
+                                    _.remove(that.items, function(i) {
+                                        return item.id === i.id;
+                                    });
+                                });
                         });
                 };
 

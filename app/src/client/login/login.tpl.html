@@ -20,7 +20,7 @@
         <table class="table table-striped" st-table="login.displayedItems" st-safe-src="login.items">
             <thead>
                 <tr class="filter">
-                    <th colspan="9">
+                    <th colspan="10">
                         <span class="form-group pull-right">
                             <input type="search" class="form-control" st-search st-delay="100" placeholder="Search"/>
                         </span>
@@ -29,6 +29,7 @@
                 </tr>
                 <tr class="header">
                     <th st-sort="id" st-skip-natural="true" st-sort-default="true">Stock #</th>
+                    <th st-sort="category" st-skip-natural="true">Category</th>
                     <th st-sort="color" st-skip-natural="true">Color</th>
                     <th st-sort="clarity" st-skip-natural="true">Clarity</th>
                     <th st-sort="certification" st-skip-natural="true">Certification</th>
@@ -42,6 +43,7 @@
             <tbody>
                 <tr ng-repeat="item in login.displayedItems">
                     <td ng-bind="item.id"></td>
+                    <td ng-bind="item.category"></td>
                     <td ng-bind="item.color"></td>
                     <td ng-bind="item.clarity"></td>
                     <td ng-bind="item.certification"></td>
@@ -59,7 +61,7 @@
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="9" class="text-center">
+                    <td colspan="10" class="text-center">
                         <div st-pagination="" st-items-by-page="50"></div>
                     </td>
                 </tr>

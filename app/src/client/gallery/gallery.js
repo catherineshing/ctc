@@ -20,9 +20,6 @@
                         count: count + 1
                     };
 
-                this.hasPrev = false;
-                this.hasNext = true;
-
                 switch ($state.current.name) {
                     case 'gallery':
                         that.parent = 'gallery';
@@ -38,20 +35,18 @@
 
                 function getItems() {
                     CtcService.getItems(args)
-                        .then(
-                            function(items) {
-                                that.hasPrev = args.start > 0;
-                                that.hasNext = items.length > count;
+                        .then(function(items) {
+                            that.hasPrev = args.start > 0;
+                            that.hasNext = items.length > count;
 
-                                if (that.hasNext) {
-                                    items.pop();
-                                }
-
-                                that.items = items;
-
-                                $anchorScroll();
+                            if (that.hasNext) {
+                                items.pop();
                             }
-                        );
+
+                            that.items = items;
+
+                            $anchorScroll();
+                        });
                 }
 
                 getItems();

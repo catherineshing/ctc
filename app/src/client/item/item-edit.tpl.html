@@ -1,14 +1,14 @@
 <div class="modal-header">
-    <h4 class="modal-title">{{title}}<button class="close" ng-click="$dismiss()">&times;</button></h4>
+    <h4 class="modal-title">{{title}}<button class="close" ng-click="itemEdit.cancel()">&times;</button></h4>
 </div>
 
 <div class="modal-body">
     <div class="row">
         <div class="col-sm-6">
-            <div class="uploader">
+            <div class="uploader" ng-class="{danger: itemEdit.uploader.$invalid}">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="drop-area" ngf-drop ngf-change="itemEdit.uploadFiles($files, $invalidFiles)" ngf-accept="'{{itemEdit.options.accept}}'" ngf-pattern="'{{itemEdit.options.accept}}'" ngf-multiple="{{itemEdit.options.multiple}}" ngf-allow-dir="{{itemEdit.options.allowDir}}" ngf-resize="{{itemEdit.options.ngf-resize}}">
+                        <div class="drop-area" ngf-drop ngf-change="itemEdit.uploadFiles($files, $invalidFiles)" ngf-accept="'{{itemEdit.options.accept}}'" ngf-pattern="'{{itemEdit.options.accept}}'" ngf-multiple="{{itemEdit.options.multiple}}" ngf-allow-dir="{{itemEdit.options.allowDir}}" ngf-resize="{{itemEdit.options.resize}}">
                             <div class="header text-muted text-center">
                                 <i class="glyphicon glyphicon-cloud-upload"></i>
                                 <span>Drop files to attach, or </span>
@@ -20,7 +20,7 @@
                                     <div class="thumbnail main">
                                         <img ng-src="{{itemEdit.item.images[0]}}" alt="{{itemEdit.item.id}}">
                                     </div>
-                                    <div ui-sortable class="images" ng-model="itemEdit.item.images" tooltip="Drag images to reorder">
+                                    <div ui-sortable class="images" ng-model="itemEdit.item.images" tooltip="Drag images to reorder" tooltip-placement="bottom">
                                         <div class="thumbnail preview" ng-repeat="image in itemEdit.item.images track by $index">
                                             <i class="glyphicon glyphicon-remove" tooltip="Delete" ng-click="itemEdit.deleteImage($index, image)"></i>
                                             <div class="image" style="background-image:url('{{image}}');"></div>
@@ -31,6 +31,9 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="validation-message text-center" ng-show="itemEdit.uploader.$invalid">
+                <span class="help-block uploader-error" ng-show="!itemEdit.item.images.length">Required</span>
             </div>
         </div>
         <div class="col-sm-6">
@@ -62,9 +65,6 @@
                             <select class="form-control" name="color" ng-model="itemEdit.item.color" ng-blur="form.color.$pristine = false">
                                 <option value="{{color}}" ng-repeat="color in itemEdit.colors">{{color}}</option>
                             </select>
-                            <div class="validation-message" ng-show="!form.color.$pristine && form.color.$invalid">
-                                <span class="help-block" ng-show="form.color.$error.required">Required</span>
-                            </div>
                         </div>
                     </div>
                     <div class="form-group" ng-class="{'has-error': !form.clarity.$pristine && form.clarity.$invalid}">
@@ -73,9 +73,6 @@
                             <select class="form-control" name="clarity" ng-model="itemEdit.item.clarity" ng-blur="form.clarity.$pristine = false">
                                 <option value="{{clarity}}" ng-repeat="clarity in itemEdit.clarities">{{clarity}}</option>
                             </select>
-                            <div class="validation-message" ng-show="!form.clarity.$pristine && form.clarity.$invalid">
-                                <span class="help-block" ng-show="form.clarity.$error.required">Required</span>
-                            </div>
                         </div>
                     </div>
                     <div class="form-group" ng-class="{'has-error': !form.certification.$pristine && form.certification.$invalid}">
@@ -84,9 +81,6 @@
                             <select class="form-control" name="certification" ng-model="itemEdit.item.certification" ng-blur="form.certification.$pristine = false">
                                 <option value="{{key}}" ng-repeat="(key, value) in itemEdit.certifications">{{value}}</option>
                             </select>
-                            <div class="validation-message" ng-show="!form.certification.$pristine && form.certification.$invalid">
-                                <span class="help-block" ng-show="form.certification.$error.required">Required</span>
-                            </div>
                         </div>
                     </div>
                     <div class="form-group" ng-class="{'has-error': !form.shape.$pristine && form.shape.$invalid}">
@@ -95,9 +89,6 @@
                             <select class="form-control" name="shape" ng-model="itemEdit.item.shape" ng-blur="form.shape.$pristine = false">
                                 <option value="{{shape | lowercase}}" ng-repeat="shape in itemEdit.shapes">{{shape}}</option>
                             </select>
-                            <div class="validation-message" ng-show="!form.shape.$pristine && form.shape.$invalid">
-                                <span class="help-block" ng-show="form.shape.$error.required">Required</span>
-                            </div>
                         </div>
                     </div>
                     <div class="form-group" ng-class="{'has-error': !form.weight.$pristine && form.weight.$invalid}">
@@ -106,9 +97,6 @@
                             <div class="input-group">
                                 <input type="text" name="weight" class="form-control" ng-model="itemEdit.item.weight">
                                 <div class="input-group-addon">CT</div>
-                            </div>
-                            <div class="validation-message" ng-show="!form.weight.$pristine && form.weight.$invalid">
-                                <span class="help-block" ng-show="form.weight.$error.required">Required</span>
                             </div>
                         </div>
                     </div>
@@ -150,6 +138,6 @@
 </div>
 
 <div class="modal-footer">
-    <button class="btn btn-link" ng-click="$dismiss()">Cancel</button>
-    <button type="submit" class="btn btn-success" ng-click="itemEdit.saveItem(itemEdit.item)" ng-disabled="form.$invalid">Save</button>
+    <button class="btn btn-link" ng-click="itemEdit.cancel()">Cancel</button>
+    <button type="submit" class="btn btn-success" ng-click="itemEdit.saveItem(itemEdit.item)">Save</button>
 </div>
