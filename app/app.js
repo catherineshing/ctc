@@ -43,8 +43,7 @@ app.get('*', function(req, res) {
         ctc.getItem(itemId)
             .then(function(result) {
                 res.render(__dirname + '/src/client/item/item-crawler.html', {
-                    // url: 'http://ctcjewelers.com',
-                    url: 'http://ec2-35-167-223-11.us-west-2.compute.amazonaws.com:8888',
+                    url: info.url,
                     item: result
                 });
             });

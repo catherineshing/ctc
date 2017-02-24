@@ -210,7 +210,7 @@ function getArgs(args) {
 function convertItem(item) {
     var description = [];
 
-    item.url = 'http://ctcjewelers.com/gallery/item/' + item.id;
+    item.url = info.url + '/gallery/item/' + item.id;
     item.encodedUrl = encodeURIComponent(item.url);
 
     if (item.weight) {
