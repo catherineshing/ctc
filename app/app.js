@@ -7,7 +7,8 @@ var express = require('express'),
     multipart = require('connect-multiparty'),
     info = require(__dirname + '/src/server/info.json'),
     app = express(),
-    api;
+    api,
+    ctc;
 
 app.use(bodyParser.json());
 app.use(multipart());
@@ -24,13 +25,35 @@ app.set('views', __dirname + '/src/client');
 
 // api
 api = require(__dirname + '/src/server/ctc-api')(app);
+ctc = require(__dirname + '/src/server/ctc');
+
+function isCrawler(userAgent) {
+    return userAgent.includes('facebookexternalhit') || userAgent.includes('Twitterbot');
+}
 
 // application
 app.get('*', function(req, res) {
-    res.render('index.html', {
-        info: info,
-        infoStr: JSON.stringify(info)
-    });
+    var userAgent = req.headers['user-agent'],
+        urlMatches = req.url.match(/\/item\/(.+)$/),
+        itemId;
+
+    if (isCrawler(userAgent) && urlMatches) {
+        itemId = urlMatches[1];
+
+        ctc.getItem(itemId)
+            .then(function(result) {
+                res.render(__dirname + '/src/client/item/item-crawler.html', {
+                    // url: 'http://ctcjewelers.com',
+                    url: 'http://ec2-35-167-223-11.us-west-2.compute.amazonaws.com:8888',
+                    item: result
+                });
+            });
+    } else {
+        res.render('index.html', {
+            info: info,
+            infoStr: JSON.stringify(info)
+        });
+    }
 });
 
 // listen
