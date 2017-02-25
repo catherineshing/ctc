@@ -100,7 +100,6 @@
                     FB.ui({
                         method: 'share',
                         href: item.url
-                        // quote: item.description
                     }, function(response) {
                         if (!response || response.error) {
                             deferred.reject('Facebook share failed');
@@ -126,7 +125,7 @@
                         top = Math.round((winHeight / 2) - (height / 2));
                     }
 
-                    url = 'https://twitter.com/intent/tweet?text=' + item.description + '&url=' + item.encodedUrl + '&via=CTCJewelers';
+                    url = 'https://twitter.com/intent/tweet?url=' + item.encodedUrl;
 
                     $window.open(url, 'intent', windowOptions + ',width=' + width + ',height=' + height + ',left=' + left + ',top=' + top);
                 };
