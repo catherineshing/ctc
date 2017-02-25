@@ -25,7 +25,7 @@
             <div class="header">
                 <div class="row">
                     <div class="col-sm-6">
-                        <a href="home" ng-click="index.loadTab({path: 'home'})"><img ng-src="{{info.logo}}" class="name" alt="{{info.name}}"></a>
+                        <a href="/home" ng-click="index.loadTab({path: 'home'})"><img ng-src="{{info.logo}}" class="name" alt="{{info.name}}"></a>
                     </div>
                     <div class="col-sm-6">
                         <div class="hidden-xs text-right info">
@@ -46,7 +46,7 @@
             <div class="nav-bar">
                 <ul class="nav nav-tabs" role="navigation">
                     <li role="presentation" ng-class="{active: index.tab === tab.path}" ng-repeat="tab in index.tabs">
-                        <a href="{{tab.path}}" ng-click="index.loadTab(tab)">
+                        <a ng-href="/{{tab.path}}" ng-click="index.loadTab(tab)">
                             <div class="hidden-xs" ng-bind="tab.name"></div>
                             <div class="visible-xs"><span class="{{tab.icon}}"></span></div>
                         </a>

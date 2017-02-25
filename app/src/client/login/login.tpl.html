@@ -42,7 +42,9 @@
             </thead>
             <tbody>
                 <tr ng-repeat="item in login.displayedItems">
-                    <td ng-bind="item.id"></td>
+                    <td>
+                        <a ng-href="/gallery/item/{{item.id}}" ng-bind="item.id"></a>
+                    </td>
                     <td ng-bind="item.category"></td>
                     <td ng-bind="item.color"></td>
                     <td ng-bind="item.clarity"></td>
