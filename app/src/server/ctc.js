@@ -226,7 +226,7 @@ function convertItem(item) {
         description.push(item.clarity);
     }
 
-    item.description = description.join(' ');
+    item.description = _.isEmpty(description) ? item.id : description.join(' ');
 
     return item;
 }
