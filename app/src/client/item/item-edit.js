@@ -26,7 +26,7 @@
                 this.options = {
                     accept: 'image/*',
                     maxFiles: 20,
-                    maxSize: '20MB',
+                    maxSize: '8MB',
                     multiple: true,
                     allowDir: true,
                     resize: {

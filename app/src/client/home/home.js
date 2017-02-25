@@ -13,11 +13,9 @@
                 var that = this;
 
                 CtcService.getItems({start: 0, count: 10})
-                    .then(
-                        function(items) {
-                            that.items = items;
-                        }
-                    );
+                    .then(function(items) {
+                        that.items = items;
+                    });
 
                 this.viewItem = function(id) {
                     $scope.index.tab = 'gallery';
