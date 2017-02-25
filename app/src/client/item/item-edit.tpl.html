@@ -51,7 +51,7 @@
                     <div class="form-group" ng-class="{'has-error': !form.category.$pristine && form.category.$invalid}">
                         <label class="col-sm-3">Category</label>
                         <div class="col-sm-9">
-                            <select class="form-control" name="category" ng-model="itemEdit.item.category" ng-blur="form.category.$pristine = false">
+                            <select class="form-control" name="category" ng-model="itemEdit.item.category" ng-blur="form.category.$pristine = false" required>
                                 <option value="{{category}}" ng-repeat="category in itemEdit.categories">{{category}}</option>
                             </select>
                             <div class="validation-message" ng-show="!form.category.$pristine && form.category.$invalid">
