@@ -11,6 +11,8 @@ cd ctc
 npm install
 bower install
 
+mkdir app/src/server/images
+mkdir app/src/server/images/items
 mkdir app/src/server/images/tmp
 
 nodemon app/app.js
