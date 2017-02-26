@@ -8,6 +8,7 @@
         .constant('CtcConstant', {
             Categories: [
                 'Engagement Rings',
+                'Settings',
                 'Wedding Bands',
                 'Other'
             ],
